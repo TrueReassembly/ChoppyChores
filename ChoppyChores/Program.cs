@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ChoppyChores
@@ -16,7 +14,12 @@ namespace ChoppyChores
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            
+            // If Data files do not exist, create them
+            if (File.Exists("Children.txt")) File.CreateText("Children.txt").Close();
+            if (File.Exists("Chores.txt")) File.CreateText("Chores.txt").Close();
+            if (File.Exists("Rewards.txt")) File.CreateText("Rewards.txt").Close();
+            Application.Run(new LoginPage());
         }
     }
 }
