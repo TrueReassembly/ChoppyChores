@@ -16,7 +16,7 @@ namespace ChoppyChores
             Application.SetCompatibleTextRenderingDefault(false);
             
             // If Data files do not exist, create them
-            if (File.Exists("Children.txt")) File.CreateText("Children.txt").Close();
+            if (File.Exists("Accounts.txt")) File.CreateText("Accounts.txt").Close();
             if (File.Exists("Chores.txt")) File.CreateText("Chores.txt").Close();
             if (File.Exists("Rewards.txt")) File.CreateText("Rewards.txt").Close();
             Application.Run(new LoginPage());

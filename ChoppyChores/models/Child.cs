@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace ChoppyChores.models
 {
-    class Child : Account
+    public class Child : Account
     {
         private int age;
         private int points;
         private List<String> chores; //Stores Chore ID
         private List<String> rewards; //Stores Reward IDs
+
+        
     }
 }

@@ -1,0 +1,5 @@
+﻿PARENT:
+id;AccountType;username;password
+
+CHILD:
+id;AccountType;username;password;age;points;chores;rewards
