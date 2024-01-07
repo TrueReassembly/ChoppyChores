@@ -8,7 +8,7 @@ namespace ChoppyChores.models
 {
     public enum AccountType
     {
-        PARENT,
-        CHILD
+        Parent,
+        Child
     }
 }

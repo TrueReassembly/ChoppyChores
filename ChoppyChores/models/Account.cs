@@ -1,47 +1,56 @@
 ﻿using System;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using ChoppyChores.data;
+using ChoppyChores.utils;
+
 namespace ChoppyChores.models
 {
-    public class Account
+    public abstract class Account
     {
-        private String id;
-        private AccountType accountType;
-        private String username;
-        private String password;
+        private string _id;
+        private AccountType _accountType;
+        private string _username;
+        private string _password;
 
-        public String GetID()
+        public string GetId()
         {
-            return id;
+            return _id;
         }
 
-        public String GetUsername()
+        public string GetUsername()
         {
-            return username;
+            return _username;
         }
 
-        public String GetPassword()
+        public string GetPassword()
         {
-            return password;
+            return _password;
         }
 
-        public void ResetPassword(String rawPassword)
+        public void ResetPassword(string rawPassword)
         {
-            password = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(rawPassword)).ToString();
+            _password = GeneralUtils.ComputeHash(rawPassword);
             // Add Saving
         }
-
-        public Account(AccountType type, String username, String password)
+        
+        protected Account(AccountType type, string username, string password)
         {
-            accountType = type;
-            this.username = username;
-            this.password = password;
-            // Add ID
+            _accountType = type;
+            this._username = username;
+            this._password = GeneralUtils.ComputeHash(password);
+            _id = DataFileHandler.Instance.FindNewId().ToString();
         }
-
-        public Object fromString(String toParse)
+        
+        protected Account(AccountType type, string id, string username, string password)
         {
-            return null;
+            _accountType = type;
+            this._username = username;
+            this._password = password;
+            this._id = id;
         }
+        
+        public abstract void Save();
     }
 }
