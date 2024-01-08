@@ -115,15 +115,6 @@ namespace ChoppyChores.data
                     callback(null);
                     break;
             }
-            
-        }
-
-        public void Deserialize(AccountType type)
-        {
-            if (type == AccountType.Child)
-            {
-                
-            }
         }
     }
 }

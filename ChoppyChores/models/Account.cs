@@ -9,9 +9,9 @@ namespace ChoppyChores.models
 {
     public abstract class Account
     {
-        private string _id;
-        private AccountType _accountType;
-        private string _username;
+        private readonly string _id;
+        private readonly AccountType _accountType;
+        private readonly string _username;
         private string _password;
 
         public string GetId()
@@ -46,9 +46,9 @@ namespace ChoppyChores.models
         protected Account(AccountType type, string id, string username, string password)
         {
             _accountType = type;
-            this._username = username;
-            this._password = password;
-            this._id = id;
+            _username = username;
+            _password = password;
+            _id = id;
         }
         
         public abstract void Save();

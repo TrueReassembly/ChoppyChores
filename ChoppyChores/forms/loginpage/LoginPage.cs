@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using ChoppyChores.models;
 
@@ -9,6 +10,11 @@ namespace ChoppyChores
         public LoginPage()
         {
             InitializeComponent();
+        }
+
+        private void LoginPage_Load(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
