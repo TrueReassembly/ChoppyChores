@@ -1,17 +1,13 @@
-﻿using System;
-using System.IO;
-using System.Security.Cryptography;
-using System.Text;
-using ChoppyChores.data;
+﻿using ChoppyChores.data;
 using ChoppyChores.utils;
 
 namespace ChoppyChores.models
 {
     public abstract class Account
     {
-        private readonly string _id;
+        private string _id;
         private readonly AccountType _accountType;
-        private readonly string _username;
+        private string _username;
         private string _password;
 
         public string GetId()
@@ -19,14 +15,29 @@ namespace ChoppyChores.models
             return _id;
         }
 
+        public void SetId(string id)
+        {
+            _id = id;
+        }
+
         public string GetUsername()
         {
             return _username;
         }
 
+        public void SetUsername(string name)
+        {
+            _username = name;
+        }
+
         public string GetPassword()
         {
             return _password;
+        }
+
+        public void SetPassword(string password)
+        {
+            _password = password;
         }
 
         public void ResetPassword(string rawPassword)
@@ -38,8 +49,8 @@ namespace ChoppyChores.models
         protected Account(AccountType type, string username, string password)
         {
             _accountType = type;
-            this._username = username;
-            this._password = GeneralUtils.ComputeHash(password);
+            _username = username;
+            _password = GeneralUtils.ComputeHash(password);
             _id = DataFileHandler.Instance.FindNewId().ToString();
         }
         

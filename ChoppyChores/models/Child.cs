@@ -13,15 +13,23 @@ namespace ChoppyChores.models
     {
         private int _age;
         private int _points;
-        private List<string> _chores; //Stores Chore ID
+        private List<string> _chores; //Stores Chore IDs
         private List<string> _rewards; //Stores Reward IDs
         
         public Child(string username, string password, int age, int points, List<string> chores, List<string> rewards) : base(AccountType.Child, username, password)
         {
-            this._age = age;
-            this._points = points;
-            this._chores = chores;
-            this._rewards = rewards;
+            _age = age;
+            _points = points;
+            _chores = chores;
+            _rewards = rewards;
+        }
+
+        public Child(string id, string username, string password, int age, int points, List<string> chores, List<string> rewards) : base(AccountType.Child, id, username, password)
+        {
+            _age = age;
+            _points = points;
+            _chores = chores;
+            _rewards = rewards;
         }
 
         public override void Save()
@@ -45,32 +53,6 @@ namespace ChoppyChores.models
                     iteration++;
                 }
             });
-            //
-            // string parsedChores = "", parsedRewards = "";
-            // var i = 0;
-            // foreach (var chore in _chores)
-            // {
-            //     
-            //     if (i == _chores.Count - 1)
-            //     {
-            //         parsedChores += chore;
-            //         break;
-            //     }
-            //     parsedChores += chore + "+";
-            //     i++;
-            // }
-            //
-            // i = 0;
-            // foreach (var reward in _rewards)
-            // {
-            //     if (i == _rewards.Count - 1)
-            //     {
-            //         parsedRewards += reward;
-            //         break;
-            //     }
-            //     parsedRewards += reward + "+";
-            //     i++;
-            // }
             
             var lines = new List<string>();
 
