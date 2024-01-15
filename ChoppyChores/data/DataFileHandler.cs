@@ -9,12 +9,18 @@ namespace ChoppyChores.data
 {
     internal class DataFileHandler
     {
-        
-        private static DataFileHandler _instance;
+        private static DataFileHandler _instance = null;
         private const string AccountsFile = "./storage/Accounts.txt";
         private const string ChoresFile = "./storage/Chores.txt";
         private const string RewardsFile = "./storage/Rewards.txt";
 
+        public enum ChoreSort
+        {
+            Name,
+            Cost,
+            Age
+        }
+        
         public static DataFileHandler Instance => _instance ?? (_instance = new DataFileHandler());
 
         public Child GetChildById(String id)
@@ -116,5 +122,7 @@ namespace ChoppyChores.data
                     break;
             }
         }
+        
+        public void sort
     }
 }
