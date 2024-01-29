@@ -11,7 +11,8 @@ namespace ChoppyChores.utils
             var split = str.Split(';');
             try
             {
-                return new Child(split[0], split[2], split[3], int.Parse(split[4]), int.Parse(split[5]), split[6].Split('+').ToList(), split[7].Split('+').ToList())
+                return new Child(split[0], split[2], split[3], int.Parse(split[4]), int.Parse(split[5]),
+                    split[6].Split('+').ToList(), split[7].Split('+').ToList());
             }
             catch
             {
@@ -21,11 +22,35 @@ namespace ChoppyChores.utils
 
         public static Chore ToChore(this string str)
         {
+            
+            // TODO: Implement this
             var split = str.Split(';');
             try
             {
-                return new Chore()
+                return new Chore(split[0], split[1], int.Parse(split[2]), bool.Parse(split[3]), int.Parse(split[4]),
+                    int.Parse(split[5]), (ChoreState)int.Parse(split[6]));
             }
+            catch
+            {
+                throw new Exception("String '" + str + "' cannot be converted to a Chore");
+            }
+        }
+        
+        public static bool IsBefore(this string first, string second, int iteration = 0)
+        {
+            first = first.ToLower();
+            second = second.ToLower();
+            //If we reach the end of either string, return the shorter one because that will appear first
+            if (first.Length == iteration || second.Length == iteration)
+            {
+                return first.Length < second.Length;
+            }
+            char[] chars = {'a' ,'b' ,'c' ,'d' ,'e' ,'f' ,'g' ,'h' ,'i' ,'j' ,'k' ,'l' ,'m' ,'n' ,'o' ,'p' ,'q' ,'r' ,'s' ,'t' ,'u' ,'v' ,'w' ,'x' ,'y' ,'z'};
+            if (Array.IndexOf(chars, first[iteration]) == Array.IndexOf(chars, second[iteration]))
+            {
+                return IsBefore(first, second, iteration + 1);
+            }
+            return Array.IndexOf(chars, first[iteration]) > Array.IndexOf(chars, second[iteration]);
         }
     }
 }

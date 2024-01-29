@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,11 +18,15 @@ namespace ChoppyChores.data
         public enum ChoreSort
         {
             Name,
-            Cost,
+            Reward,
             Age
         }
-        
-        public static DataFileHandler Instance => _instance ?? (_instance = new DataFileHandler());
+
+
+        public static DataFileHandler Instance
+        {
+            get { return _instance ?? (_instance = new DataFileHandler()); }
+        }
 
         public Child GetChildById(String id)
         {
@@ -123,6 +128,170 @@ namespace ChoppyChores.data
             }
         }
         
-        public void sort
+        public List<Chore> sortChoresBy(ChoreSort sort, bool ascending)
+        {
+            List<Chore> unsortedChores = new List<Chore>();
+            bool swapped = false;
+            
+            RunReader(StorageFiles.Accounts, accountFile =>
+            {
+                List<Chore> chores = new List<Chore>();
+                while (!accountFile.EndOfStream)
+                {
+                    string line = accountFile.ReadLine();
+                    string[] split = line.Split(';');
+                    
+                }
+            });
+            switch (sort)
+            {
+                case ChoreSort.Age:
+
+                    if (ascending)
+                    {
+                        do
+                        {
+                            swapped = false;
+                            for (int i = 0; i < unsortedChores.Count - 1; i++)
+                            {
+                                if (unsortedChores[i].GetMinAge() > unsortedChores[i + 1].GetMinAge())
+                                {
+                                    var temp = unsortedChores[i];
+                                    unsortedChores[i] = unsortedChores[i + 1];
+                                    unsortedChores[i + 1] = temp;
+                                    swapped = true;
+                                }
+                            }
+                        } while (swapped);
+                    }
+                    else
+                    {
+                        do
+                        {
+                            swapped = false;
+                            for (int i = 0; i < unsortedChores.Count - 1; i++)
+                            {
+                                if (unsortedChores[i].GetMinAge() < unsortedChores[i + 1].GetMinAge())
+                                {
+                                    var temp = unsortedChores[i];
+                                    unsortedChores[i] = unsortedChores[i + 1];
+                                    unsortedChores[i + 1] = temp;
+                                    swapped = true;
+                                }
+                            }
+                        } while (swapped);
+                    }
+
+                    break;
+                case ChoreSort.Reward:
+                    if (ascending)
+                    {
+                        do
+                        {
+                            swapped = false;
+                            for (int i = 0; i < unsortedChores.Count - 1; i++)
+                            {
+                                if (unsortedChores[i].GetReward() > unsortedChores[i + 1].GetReward())
+                                {
+                                    var temp = unsortedChores[i];
+                                    unsortedChores[i] = unsortedChores[i + 1];
+                                    unsortedChores[i + 1] = temp;
+                                    swapped = true;
+                                }
+                            }
+                        } while (swapped);
+                    }
+                    else
+                    {
+                        do
+                        {
+                            swapped = false;
+                            for (int i = 0; i < unsortedChores.Count - 1; i++)
+                            {
+                                if (unsortedChores[i].GetReward() >= unsortedChores[i + 1].GetReward()) continue;
+                                var temp = unsortedChores[i];
+                                unsortedChores[i] = unsortedChores[i + 1];
+                                unsortedChores[i + 1] = temp;
+                                swapped = true;
+                            }
+                        } while (swapped);
+                    }
+
+                    break;
+                case ChoreSort.Name:
+                    
+                    if (ascending)
+                    {
+                        do
+                        {
+                            swapped = false;
+                            for (int i = 0; i < unsortedChores.Count - 1; i++)
+                            {
+                                string name1 = unsortedChores[i].GetName();
+                                string name2 = unsortedChores[i + 1].GetName();
+                                if (name2.IsBefore(name1))
+                                {
+                                    swapped = true;
+                                    var temp = unsortedChores[i];
+                                    unsortedChores[i] = unsortedChores[i + 1];
+                                    unsortedChores[i + 1] = temp;
+                                }
+                            }
+                        } while (swapped);
+                    }
+
+                    break;
+            
+            }
+
+            return unsortedChores;
+        }
+
+        /**
+         * Gets a child from the specified name
+         * @param name The name of the child to get
+         * @return The child with the specified name, or null if no child with that name exists
+         */
+        public Child GetChildFromName(string name)
+        {
+            Child child = null;
+            RunReader(StorageFiles.Chores, reader =>
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    if (line == null) continue;
+                    var split = line.Split(';');
+                    if (split[1].Equals("AccountType.Child") && split[2].Equals(name))
+                    {
+                        child = line.ToChild();
+                    }
+                }
+            });
+            return child;
+        }
+
+        /**
+         * Gets a list of all children
+         * @return A list of all children, or an empty list if no children exist
+         */
+        public List<Child> GetAllChildren()
+        {
+            List<Child> children = new List<Child>();
+            RunReader(StorageFiles.Accounts, reader =>
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    if (line == null) continue;
+                    var split = line.Split(';');
+                    if (split[1].Equals("AccountType.Child"))
+                    {
+                        children.Add(line.ToChild());
+                    }
+                }
+            });
+            return children;
+        }
     }
 }

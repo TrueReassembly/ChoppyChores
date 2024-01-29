@@ -5,4 +5,4 @@ CHILD:
 id;AccountType;username;password;age;points;choreID1+choreID2+choreID3+;RewardID1+RewardID2+RewardID3
 
 CHORES:
-id;name;reward;public;claimedBy OR -1;minAge
+id;name;reward;public;claimedBy OR -1;minAge;state

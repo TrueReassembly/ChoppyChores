@@ -94,6 +94,55 @@ namespace ChoppyChores.models
                 }
             });
         }
-    }
+        
+        public int GetReward()
+        {
+            return _reward;
+        }
+        
+        public void SetReward(int reward)
+        {
+            _reward = reward;
+        }
+        
+        public string GetName()
+        {
+            return _name;
+        }
+        
+        public void SetName(string name)
+        {
+            _name = name;
+        }
+        
+        public int GetMinAge()
+        {
+            return _minAge;
+        }
+        
+        public void SetMinAge(int age)
+        {
+            _minAge = age;
+        }
+        
+        public string GetId()
+        {
+            return _id;
+        }
+        
+        public void SetId(string id)
+        {
+            _id = id;
+        }
+        
+        public int GetClaimedBy()
+        {
+            return _claimedBy;
+        }
+        
+        public void SetClaimedBy(int id)
+        {
+            _claimedBy = id;
+        }
     }
 }
