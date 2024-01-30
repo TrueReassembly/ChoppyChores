@@ -28,7 +28,9 @@ namespace ChoppyChores
                 File.Create("./storage/Chores.txt").Close();
                 File.Create("./storage/Rewards.txt").Close();
             }
-            
+
+            Application.Run(new LoginPage());
+
             // Create list of template chores and rewards
             List<string> chores = new List<string>();
             chores.Add("Take out the trash");
@@ -45,10 +47,11 @@ namespace ChoppyChores
             new Child("child3", "child3", 5, 30, chores, rewards).Save();
             foreach (var child in DataFileHandler.Instance.GetAllChildren())
             {
-                Console.WriteLine(child.GetUsername());                
+                Console.WriteLine(child.ToString());              
             }
+
+            Console.WriteLine("-----------------------");
             
-            Application.Run(new LoginPage());
         }
     }
 }

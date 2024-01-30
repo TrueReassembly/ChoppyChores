@@ -11,10 +11,5 @@ namespace ChoppyChores
         {
             InitializeComponent();
         }
-
-        private void LoginPage_Load(object sender, EventArgs e)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

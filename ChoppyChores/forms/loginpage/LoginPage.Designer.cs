@@ -50,7 +50,6 @@ namespace ChoppyChores
             this.Controls.Add(this.richTextBox1);
             this.Name = "LoginPage";
             this.Text = "Choppy Chores";
-            this.Load += new System.EventHandler(this.LoginPage_Load);
             this.ResumeLayout(false);
         }
 
