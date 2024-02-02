@@ -28,7 +28,7 @@ namespace ChoppyChores.data
             get { return _instance ?? (_instance = new DataFileHandler()); }
         }
 
-        public Child GetChildById(String id)
+        public Child GetChildById(string id)
         {
             
             Child child = null;
@@ -292,6 +292,19 @@ namespace ChoppyChores.data
                 }
             });
             return children;
+        }
+
+        public List<Chore> GetAllChores()
+        {
+            List<Chore> temp = new List<Chore>();
+            RunReader(StorageFiles.Chores, reader =>
+            {
+                while (!reader.EndOfStream)
+                {
+                    temp.Add(reader.ReadLine().ToChore());
+                }
+            });
+            return temp;
         }
     }
 }

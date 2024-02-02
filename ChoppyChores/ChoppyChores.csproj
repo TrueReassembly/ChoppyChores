@@ -55,6 +55,12 @@
     <Compile Include="forms\loginpage\LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\parent\chores\ParentViewChoresPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\parent\chores\ParentViewChoresPage.Designer.cs">
+      <DependentUpon>ParentViewChoresPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="models\Account.cs" />
     <Compile Include="models\AccountType.cs" />
     <Compile Include="models\Child.cs" />
@@ -67,6 +73,9 @@
     <EmbeddedResource Include="forms\loginpage\LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\parent\chores\ParentViewChoresPage.resx">
+      <DependentUpon>ParentViewChoresPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -76,6 +85,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -90,7 +100,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="forms\parent\chores\" />
     <Folder Include="registry\" />
   </ItemGroup>
   <ItemGroup>
