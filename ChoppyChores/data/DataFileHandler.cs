@@ -262,7 +262,7 @@ namespace ChoppyChores.data
                     var line = reader.ReadLine();
                     if (line == null) continue;
                     var split = line.Split(';');
-                    if (split[1].Equals("AccountType.Child") && split[2].Equals(name))
+                    if (split[1].Equals("Child") && split[2].Equals(name))
                     {
                         child = line.ToChild();
                     }
@@ -285,7 +285,7 @@ namespace ChoppyChores.data
                     var line = reader.ReadLine();
                     if (line == null) continue;
                     var split = line.Split(';');
-                    if (split[1].Equals("AccountType.Child"))
+                    if (split[1].Equals("Child"))
                     {
                         children.Add(line.ToChild());
                     }
