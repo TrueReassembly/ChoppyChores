@@ -11,8 +11,7 @@ namespace ChoppyChores.utils
             var split = str.Split(';');
             try
             {
-                return new Child(split[0], split[2], split[3], int.Parse(split[4]), int.Parse(split[5]),
-                    split[6].Split('+').ToList(), split[7].Split('+').ToList());
+                return new Child(split[0], split[2], split[3], int.Parse(split[4]), int.Parse(split[5]));
             }
             catch
             {
@@ -22,18 +21,23 @@ namespace ChoppyChores.utils
 
         public static Chore ToChore(this string str)
         {
-            
-            // TODO: Implement this
             var split = str.Split(';');
             try
             {
-                return new Chore(split[0], split[1], int.Parse(split[2]), bool.Parse(split[3]), int.Parse(split[4]),
-                    int.Parse(split[5]), (ChoreState)int.Parse(split[6]));
+                var state = (ChoreState) Enum.Parse(typeof(ChoreState), split[6]);
+
+                // Constructor: public Chore(string id, string name, int reward, bool isPublic, int minAge, string claimedBy, ChoreState state)
+                // Saving: _id;_name;_reward;_public;_minAge;_claimedBy;_state
+
+                return new Chore(split[0], split[1], int.Parse(split[2]), bool.Parse(split[3]), int.Parse(split[4]), split[5], state);
             }
-            catch
+            catch (Exception e)
             {
+                Console.Error.WriteLine(e.StackTrace);
+                
                 throw new Exception("String '" + str + "' cannot be converted to a Chore");
             }
+            
         }
         
         public static bool IsBefore(this string first, string second, int iteration = 0)

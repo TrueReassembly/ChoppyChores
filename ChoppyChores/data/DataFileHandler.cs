@@ -28,6 +28,11 @@ namespace ChoppyChores.data
             get { return _instance ?? (_instance = new DataFileHandler()); }
         }
 
+        /**
+         * Gets a child from the specified id
+         * @param id The id of the child to get
+         * @return The child with the specified id, or null if no child with that id exists
+         */
         public Child GetChildById(string id)
         {
             
@@ -50,20 +55,20 @@ namespace ChoppyChores.data
             return child;
         }
 
-        public int FindNewId()
+        public string FindNewId(StorageFiles file)
         {
-            Int32 id = 0;
+            string id = "";
             string[] lines = null;
             var random = new Random();
-            RunReader(StorageFiles.Accounts, accountFile =>
+            RunReader(file, theFile =>
             {
-                lines = accountFile.ReadToEnd().Split('\n');
+                lines = theFile.ReadToEnd().Split('\n');
             });
             bool idExists = true;
             while (idExists)
             {
-                id = random.Next(100, 999);
-                idExists = lines.Any(line => line.Split(';')[0].Equals(id.ToString()));
+                id = random.Next(100, 999).ToString();
+                idExists = lines.Any(line => line.Split(';')[0].Equals(id));
             }
             return id;
         }
@@ -255,7 +260,7 @@ namespace ChoppyChores.data
         public Child GetChildFromName(string name)
         {
             Child child = null;
-            RunReader(StorageFiles.Chores, reader =>
+            RunReader(StorageFiles.Accounts, reader =>
             {
                 while (!reader.EndOfStream)
                 {
@@ -301,10 +306,52 @@ namespace ChoppyChores.data
             {
                 while (!reader.EndOfStream)
                 {
-                    temp.Add(reader.ReadLine().ToChore());
+                    try {
+                        temp.Add(reader.ReadLine().ToChore());
+                    } 
+                    catch (Exception e)
+                    {
+                        continue;
+                    }
                 }
             });
             return temp;
+        }
+
+        public List<Child> GetChildrenSortedByName()
+        {
+            List<Child> children = GetAllChildren();
+            while (true)
+            {
+                bool swapped = false;
+                for (int i = 0; i < children.Count - 1; i++)
+                {
+                    if (children[i].GetUsername().IsBefore(children[i + 1].GetUsername()))
+                    {
+                        var temp = children[i];
+                        children[i] = children[i + 1];
+                        children[i + 1] = temp;
+                        swapped = true;
+                    }
+                }
+                if (!swapped) break;
+            }
+            return children;
+        }
+
+        internal string GetPath(StorageFiles chores)
+        {
+            switch (chores)
+            {
+                case StorageFiles.Accounts:
+                    return AccountsFile;
+                case StorageFiles.Chores:
+                    return ChoresFile;
+                case StorageFiles.Rewards:
+                    return RewardsFile;
+                default:
+                    return "";
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using ChoppyChores.data;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace ChoppyChores.models
@@ -11,7 +12,7 @@ namespace ChoppyChores.models
         private string _name;
         private int _reward;
         private bool _public;
-        private int _claimedBy; //User's ID
+        private string _claimedBy; //User's ID
         private int _minAge;
         private ChoreState _state;
 
@@ -22,11 +23,11 @@ namespace ChoppyChores.models
             _reward = reward;
             _public = isPublic;
             _minAge = minAge;
-            _claimedBy = -1;
+            _claimedBy = "-1";
             _state = ChoreState.Unclaimed;
         }
 
-        public Chore(string id, string name, int reward, bool isPublic, int minAge, int claimedBy, ChoreState state)
+        public Chore(string id, string name, int reward, bool isPublic, int minAge, string claimedBy, ChoreState state)
         {
             _id = id;
             _name = name;
@@ -49,9 +50,11 @@ namespace ChoppyChores.models
 
         public void Save()
         {
+
+            Console.WriteLine("SAVING CHORE");
             var lineToEdit = -1;
 
-            DataFileHandler.Instance.RunReader(StorageFiles.Accounts, reader =>
+            DataFileHandler.Instance.RunReader(StorageFiles.Chores, reader =>
             {
                 var iteration = 0;
                 while (!reader.EndOfStream)
@@ -63,6 +66,7 @@ namespace ChoppyChores.models
                     if (split[0].Equals(_id))
                     {
                         lineToEdit = iteration;
+                        break;
                     }
 
                     iteration++;
@@ -76,23 +80,24 @@ namespace ChoppyChores.models
                 lines = reader.ReadToEnd().Split('\n').ToList();
             });
 
-            DataFileHandler.Instance.RunWriter(StorageFiles.Chores, accountFile =>
-            {
-                if (lineToEdit == -1)
-                {
-                    var line = _id + ";" + _name + ";" + _public.ToString() + ";" + _claimedBy + ";" + _minAge;
-                    // Add new line to the end of the file
-                    accountFile.WriteLine(line);
-                    Console.WriteLine(line);
-                }
-                else
-                {
-                    // Ovewrite the iteration line with the new data
+            lines.RemoveAll(string.IsNullOrWhiteSpace);
 
-                    lines[lineToEdit] = _id + ";" + _name + ";" + _public.ToString() + ";" + _claimedBy + ";" + _minAge;
-                    accountFile.Write(string.Join("\n", lines));
-                }
-            });
+            if (lineToEdit == -1)
+            {
+                var line = _id + ";" + _name + ";" + _reward + ";" +_public.ToString() + ";" + _claimedBy + ";" + _minAge + ";" + _state;
+                // Add new line to the end of the file
+                lines.Add(line);
+            }
+            else
+            {
+                // Ovewrite the iteration line with the new data
+                lines[lineToEdit] = _id + ";" + _name + ";" + _reward + ";" + _public.ToString() + ";" + _claimedBy + ";" + _minAge + ";" + _state;
+            }
+            foreach (var line in lines)
+            {
+                Console.WriteLine(line);
+            }
+            File.WriteAllLines(DataFileHandler.Instance.GetPath(StorageFiles.Chores), lines);
         }
         
         public int GetReward()
@@ -135,12 +140,12 @@ namespace ChoppyChores.models
             _id = id;
         }
         
-        public int GetClaimedBy()
+        public string GetClaimedBy()
         {
             return _claimedBy;
         }
         
-        public void SetClaimedBy(int id)
+        public void SetClaimedBy(string id)
         {
             _claimedBy = id;
         }

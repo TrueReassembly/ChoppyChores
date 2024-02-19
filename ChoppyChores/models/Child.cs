@@ -13,23 +13,23 @@ namespace ChoppyChores.models
     {
         private int _age;
         private int _points;
-        private List<string> _chores; //Stores Chore IDs
-        private List<string> _rewards; //Stores Reward IDs
         
-        public Child(string username, string password, int age, int points, List<string> chores, List<string> rewards) : base(AccountType.Child, username, password)
+        public Child(string username, string password, int age, int points) : base(AccountType.Child, username, password)
         {
             _age = age;
             _points = points;
-            _chores = chores;
-            _rewards = rewards;
         }
 
-        public Child(string id, string username, string password, int age, int points, List<string> chores, List<string> rewards) : base(AccountType.Child, id, username, password)
+        public Child(string username, string password, int age) : base(AccountType.Child, username, password)
+        {
+            _age = age;
+            _points = 0;
+        }
+
+        public Child(string id, string username, string password, int age, int points) : base(AccountType.Child, id, username, password)
         {
             _age = age;
             _points = points;
-            _chores = chores;
-            _rewards = rewards;
         }
 
         public override void Save()
@@ -66,7 +66,7 @@ namespace ChoppyChores.models
                 if (lineToEdit == -1)
                 {
                     var line = GetId() + ";" + AccountType.Child + ";" + GetUsername() + ";" + GetPassword() + ";" +
-                               _age + ";" + _points + ";" + string.Join("+", _chores) + ";" + string.Join("+", _rewards);
+                               _age + ";" + _points;
                     // Add new line to the end of the file
                     accountFile.WriteLine(line);
                     Console.WriteLine(line);
@@ -75,7 +75,7 @@ namespace ChoppyChores.models
                 {
                     // Ovewrite the iteration line with the new data
                     
-                    lines[lineToEdit] = GetId() + ";" + AccountType.Child + ";" + GetUsername() + ";" + GetPassword() + ";" + _age + ";" + _points + ";" + string.Join("+", _chores) + ";" + string.Join("+", _rewards);
+                    lines[lineToEdit] = GetId() + ";" + AccountType.Child + ";" + GetUsername() + ";" + GetPassword() + ";" + _age + ";" + _points;
                     accountFile.Write(string.Join("\n", lines));
                 }
             });

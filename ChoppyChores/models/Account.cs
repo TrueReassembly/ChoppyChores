@@ -51,7 +51,7 @@ namespace ChoppyChores.models
             _accountType = type;
             _username = username;
             _password = GeneralUtils.ComputeHash(password);
-            _id = DataFileHandler.Instance.FindNewId().ToString();
+            _id = DataFileHandler.Instance.FindNewId(StorageFiles.Accounts).ToString();
         }
         
         protected Account(AccountType type, string id, string username, string password)
