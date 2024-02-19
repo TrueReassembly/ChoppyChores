@@ -29,7 +29,7 @@ namespace ChoppyChores.forms.parent.chores
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentViewChoresPage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChildViewChoresPage));
             this.buttonNextPage = new System.Windows.Forms.Button();
             this.buttonPrevPage = new System.Windows.Forms.Button();
             this.buttonSaveChore = new System.Windows.Forms.Button();
