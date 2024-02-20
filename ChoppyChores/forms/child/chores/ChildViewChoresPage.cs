@@ -10,13 +10,12 @@ namespace ChoppyChores.forms.parent.chores
     {
 
         List<Chore> chores;
-        List<Child> children;
         int pointer;
 
         public ChildViewChoresPage()
         {
             pointer = 0;
-            children = DataFileHandler.Instance.GetChildrenSortedByName();
+           
             
             InitializeComponent();
         }
@@ -26,33 +25,24 @@ namespace ChoppyChores.forms.parent.chores
             chores = DataFileHandler.Instance.GetAllChores();
             if (chores.Count == 0)
             {
-                txtChoreName.Text = "";
-                numAge.Text = "";
-                numPoints.Text = "";
-                lblPage.Text = "0/0";
-                MessageBox.Show("Please enter parameters into the empty option boxes then click 'New Chore' to create a new chore");
+                lblChoreName.Text = "Unavailable";
+                lblWorth.Text = "Unavailable";
+                lblClaimedBy.Text = "Unavailable";
+                lblStatus.Text = "Unavailable";
+                lblAge.Text = "Unavailable";
+                MessageBox.Show("There are no chores. Come back later!");
+                //TODO: Switch back to the old one
                 return;
             }
 
             Chore chore = chores[pointer];
-            txtChoreName.Text = chore.GetName();
-            var child = DataFileHandler.Instance.GetChildFromName(chore.GetClaimedBy().ToString());
-            if (child != null)
-            {
-                comboAssignedTo.SelectedIndex = children.IndexOf(child);
-            }
-            else
-                comboAssignedTo.SelectedIndex = 0;
-            numAge.Text = chore.GetMinAge().ToString();
-            numPoints.Text = chore.GetReward().ToString();
-            lblPage.Text = (pointer + 1) + " / " + chores.Count;
-            foreach (var theChild in children)
-            {
-                comboAssignedTo.Items.Add(theChild.GetUsername());
-            }
+            lblChoreName.Text = chore.GetName();
+            lblWorth.Text = "Worth " + chore.GetReward() + " Points";
+            lblAge.Text = "For children aged " + chore.GetMinAge() + " years old";
+            
         }
 
-        private void ParentViewChoresPage_Load(object sender, EventArgs e)
+        private void ChildViewChoresPage_Load(object sender, EventArgs e)
         {
             LoadEverything();
         }

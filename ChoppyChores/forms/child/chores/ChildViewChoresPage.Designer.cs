@@ -30,10 +30,9 @@ namespace ChoppyChores.forms.parent.chores
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChildViewChoresPage));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
+            this.btnChores = new System.Windows.Forms.Button();
+            this.btnRewards = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.lblChoreName = new System.Windows.Forms.Label();
             this.lblWorth = new System.Windows.Forms.Label();
@@ -41,43 +40,37 @@ namespace ChoppyChores.forms.parent.chores
             this.buttonClaim = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.btnPrevPage = new System.Windows.Forms.Button();
+            this.btnNextPage = new System.Windows.Forms.Button();
+            this.lblAge = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // btnHome
             // 
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(199, 51);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnHome.Location = new System.Drawing.Point(3, 3);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(265, 51);
+            this.btnHome.TabIndex = 0;
+            this.btnHome.Text = "Home";
+            this.btnHome.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnChores
             // 
-            this.button2.Location = new System.Drawing.Point(208, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(197, 51);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnChores.Location = new System.Drawing.Point(274, 3);
+            this.btnChores.Name = "btnChores";
+            this.btnChores.Size = new System.Drawing.Size(259, 51);
+            this.btnChores.TabIndex = 1;
+            this.btnChores.Text = "Chores";
+            this.btnChores.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnRewards
             // 
-            this.button3.Location = new System.Drawing.Point(411, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(188, 51);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(605, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(188, 51);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnRewards.Location = new System.Drawing.Point(539, 3);
+            this.btnRewards.Name = "btnRewards";
+            this.btnRewards.Size = new System.Drawing.Size(249, 51);
+            this.btnRewards.TabIndex = 2;
+            this.btnRewards.Text = "Rewards";
+            this.btnRewards.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -94,7 +87,7 @@ namespace ChoppyChores.forms.parent.chores
             this.lblChoreName.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChoreName.Location = new System.Drawing.Point(330, 68);
             this.lblChoreName.Name = "lblChoreName";
-            this.lblChoreName.Size = new System.Drawing.Size(121, 44);
+            this.lblChoreName.Size = new System.Drawing.Size(122, 44);
             this.lblChoreName.TabIndex = 5;
             this.lblChoreName.Text = "label8";
             // 
@@ -102,7 +95,7 @@ namespace ChoppyChores.forms.parent.chores
             // 
             this.lblWorth.AutoSize = true;
             this.lblWorth.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWorth.Location = new System.Drawing.Point(328, 126);
+            this.lblWorth.Location = new System.Drawing.Point(334, 112);
             this.lblWorth.Name = "lblWorth";
             this.lblWorth.Size = new System.Drawing.Size(130, 24);
             this.lblWorth.TabIndex = 6;
@@ -113,7 +106,7 @@ namespace ChoppyChores.forms.parent.chores
             // 
             this.lblClaimedBy.AutoSize = true;
             this.lblClaimedBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClaimedBy.Location = new System.Drawing.Point(334, 164);
+            this.lblClaimedBy.Location = new System.Drawing.Point(334, 136);
             this.lblClaimedBy.Name = "lblClaimedBy";
             this.lblClaimedBy.Size = new System.Drawing.Size(118, 24);
             this.lblClaimedBy.TabIndex = 7;
@@ -122,9 +115,9 @@ namespace ChoppyChores.forms.parent.chores
             // 
             // buttonClaim
             // 
-            this.buttonClaim.Location = new System.Drawing.Point(131, 370);
+            this.buttonClaim.Location = new System.Drawing.Point(121, 370);
             this.buttonClaim.Name = "buttonClaim";
-            this.buttonClaim.Size = new System.Drawing.Size(189, 68);
+            this.buttonClaim.Size = new System.Drawing.Size(283, 68);
             this.buttonClaim.TabIndex = 8;
             this.buttonClaim.Text = "Claim";
             this.buttonClaim.UseVisualStyleBackColor = true;
@@ -133,7 +126,7 @@ namespace ChoppyChores.forms.parent.chores
             // 
             this.button5.Location = new System.Drawing.Point(410, 370);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(189, 68);
+            this.button5.Size = new System.Drawing.Size(269, 68);
             this.button5.TabIndex = 9;
             this.button5.Text = "Submit";
             this.button5.UseVisualStyleBackColor = true;
@@ -142,17 +135,49 @@ namespace ChoppyChores.forms.parent.chores
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(352, 198);
+            this.lblStatus.Location = new System.Drawing.Point(352, 160);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(79, 24);
             this.lblStatus.TabIndex = 10;
             this.lblStatus.Text = "Status: z";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnPrevPage
+            // 
+            this.btnPrevPage.Location = new System.Drawing.Point(12, 370);
+            this.btnPrevPage.Name = "btnPrevPage";
+            this.btnPrevPage.Size = new System.Drawing.Size(103, 68);
+            this.btnPrevPage.TabIndex = 11;
+            this.btnPrevPage.Text = "<---";
+            this.btnPrevPage.UseVisualStyleBackColor = true;
+            // 
+            // btnNextPage
+            // 
+            this.btnNextPage.Location = new System.Drawing.Point(685, 370);
+            this.btnNextPage.Name = "btnNextPage";
+            this.btnNextPage.Size = new System.Drawing.Size(103, 68);
+            this.btnNextPage.TabIndex = 12;
+            this.btnNextPage.Text = "--->";
+            this.btnNextPage.UseVisualStyleBackColor = true;
+            // 
+            // lblAge
+            // 
+            this.lblAge.AutoSize = true;
+            this.lblAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAge.Location = new System.Drawing.Point(310, 184);
+            this.lblAge.Name = "lblAge";
+            this.lblAge.Size = new System.Drawing.Size(174, 24);
+            this.lblAge.TabIndex = 13;
+            this.lblAge.Text = "For children aged s";
+            this.lblAge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ChildViewChoresPage
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblAge);
+            this.Controls.Add(this.btnNextPage);
+            this.Controls.Add(this.btnPrevPage);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.buttonClaim);
@@ -160,10 +185,9 @@ namespace ChoppyChores.forms.parent.chores
             this.Controls.Add(this.lblWorth);
             this.Controls.Add(this.lblChoreName);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnRewards);
+            this.Controls.Add(this.btnChores);
+            this.Controls.Add(this.btnHome);
             this.Name = "ChildViewChoresPage";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -192,10 +216,9 @@ namespace ChoppyChores.forms.parent.chores
         private System.Windows.Forms.ComboBox comboAssignedTo;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblPage;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.Button btnChores;
+        private System.Windows.Forms.Button btnRewards;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblChoreName;
         private System.Windows.Forms.Label lblWorth;
@@ -203,5 +226,8 @@ namespace ChoppyChores.forms.parent.chores
         private System.Windows.Forms.Button buttonClaim;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Button btnPrevPage;
+        private System.Windows.Forms.Button btnNextPage;
+        private System.Windows.Forms.Label lblAge;
     }
 }
