@@ -149,5 +149,15 @@ namespace ChoppyChores.models
         {
             _claimedBy = id;
         }
+
+        public ChoreState GetStatus()
+        {
+            return _state;
+        }
+
+        public void SetStatus(ChoreState state)
+        {
+            _state = state;
+        }
     }
 }

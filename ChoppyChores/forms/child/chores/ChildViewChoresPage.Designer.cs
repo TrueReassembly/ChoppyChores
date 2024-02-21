@@ -37,8 +37,8 @@ namespace ChoppyChores.forms.parent.chores
             this.lblChoreName = new System.Windows.Forms.Label();
             this.lblWorth = new System.Windows.Forms.Label();
             this.lblClaimedBy = new System.Windows.Forms.Label();
-            this.buttonClaim = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnClaim = new System.Windows.Forms.Button();
+            this.btnSubmit = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
             this.btnPrevPage = new System.Windows.Forms.Button();
             this.btnNextPage = new System.Windows.Forms.Button();
@@ -87,7 +87,7 @@ namespace ChoppyChores.forms.parent.chores
             this.lblChoreName.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChoreName.Location = new System.Drawing.Point(330, 68);
             this.lblChoreName.Name = "lblChoreName";
-            this.lblChoreName.Size = new System.Drawing.Size(122, 44);
+            this.lblChoreName.Size = new System.Drawing.Size(121, 44);
             this.lblChoreName.TabIndex = 5;
             this.lblChoreName.Text = "label8";
             // 
@@ -113,23 +113,25 @@ namespace ChoppyChores.forms.parent.chores
             this.lblClaimedBy.Text = "Claimed by y";
             this.lblClaimedBy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // buttonClaim
+            // btnClaim
             // 
-            this.buttonClaim.Location = new System.Drawing.Point(121, 370);
-            this.buttonClaim.Name = "buttonClaim";
-            this.buttonClaim.Size = new System.Drawing.Size(283, 68);
-            this.buttonClaim.TabIndex = 8;
-            this.buttonClaim.Text = "Claim";
-            this.buttonClaim.UseVisualStyleBackColor = true;
+            this.btnClaim.Location = new System.Drawing.Point(121, 370);
+            this.btnClaim.Name = "btnClaim";
+            this.btnClaim.Size = new System.Drawing.Size(283, 68);
+            this.btnClaim.TabIndex = 8;
+            this.btnClaim.Text = "Claim";
+            this.btnClaim.UseVisualStyleBackColor = true;
+            this.btnClaim.Click += new System.EventHandler(this.btnClaim_Click);
             // 
-            // button5
+            // btnSubmit
             // 
-            this.button5.Location = new System.Drawing.Point(410, 370);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(269, 68);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "Submit";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnSubmit.Location = new System.Drawing.Point(410, 370);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(269, 68);
+            this.btnSubmit.TabIndex = 9;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // lblStatus
             // 
@@ -179,8 +181,8 @@ namespace ChoppyChores.forms.parent.chores
             this.Controls.Add(this.btnNextPage);
             this.Controls.Add(this.btnPrevPage);
             this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.buttonClaim);
+            this.Controls.Add(this.btnSubmit);
+            this.Controls.Add(this.btnClaim);
             this.Controls.Add(this.lblClaimedBy);
             this.Controls.Add(this.lblWorth);
             this.Controls.Add(this.lblChoreName);
@@ -223,8 +225,8 @@ namespace ChoppyChores.forms.parent.chores
         private System.Windows.Forms.Label lblChoreName;
         private System.Windows.Forms.Label lblWorth;
         private System.Windows.Forms.Label lblClaimedBy;
-        private System.Windows.Forms.Button buttonClaim;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnClaim;
+        private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Button btnPrevPage;
         private System.Windows.Forms.Button btnNextPage;

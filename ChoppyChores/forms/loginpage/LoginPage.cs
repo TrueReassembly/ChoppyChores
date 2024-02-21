@@ -25,6 +25,7 @@ namespace ChoppyChores
                     // new ChildDashboard(child).Show();
                     // this.Hide();
                     MessageBox.Show("Login Successful for " + child.GetUsername(), "a", MessageBoxButtons.OK);
+                    DataFileHandler.Instance.SetLoggedInChild(child);
                     return;
                 }
             }

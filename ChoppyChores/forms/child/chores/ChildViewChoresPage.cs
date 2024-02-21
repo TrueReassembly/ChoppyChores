@@ -47,45 +47,6 @@ namespace ChoppyChores.forms.parent.chores
             LoadEverything();
         }
 
-        private void buttonSaveChore_Click(object sender, EventArgs e)
-        {
-
-            if (chores.Count == 0)
-            {
-                MessageBox.Show("Please use the 'New Chore' button to create the new chore");
-                return;
-            }
-
-            if (txtChoreName.Text == "")
-            {
-                MessageBox.Show("Please enter a chore name");
-                return;
-            }
-            if (numAge.Text == "")
-            {
-                MessageBox.Show("Please enter a minimum age");
-                return;
-            }
-            if (numPoints.Text == "")
-            {
-                MessageBox.Show("Please enter a reward");
-                return;
-            }
-            Chore chore = chores[pointer];
-            chore.SetName(txtChoreName.Text);
-            chore.SetReward(int.Parse(numPoints.Text));
-            chore.SetMinAge(int.Parse(numAge.Text));
-            if (comboAssignedTo.SelectedIndex == 0)
-            {
-                chore.SetClaimedBy("-1");
-            }
-            else
-            {
-                chore.SetClaimedBy(children[comboAssignedTo.SelectedIndex - 1].GetId());
-            }
-            chore.Save();
-            MessageBox.Show("Chore Information Saved!");
-        }
 
         private void buttonNextPage_Click(object sender, EventArgs e)
         {
@@ -95,17 +56,38 @@ namespace ChoppyChores.forms.parent.chores
             }
             else pointer++;
 
-            txtChoreName.Text = chores[pointer].GetName();
-            var child = DataFileHandler.Instance.GetChildById(chores[pointer].GetClaimedBy());
-            if (child != null)
+            var chore = chores[pointer];
+
+            lblChoreName.Text = chore.GetName();
+            lblWorth.Text = "Worth " + chore.GetReward() + " Points";
+            lblAge.Text = "For children aged " + chore.GetMinAge() + " years old";
+            lblPage.Text = (pointer + 1) + " / " + chores.Count;
+
+            btnClaim.Enabled = false;
+            btnSubmit.Enabled = false;
+
+            switch (chore.GetStatus())
             {
-                comboAssignedTo.SelectedIndex = children.IndexOf(child);
+                case ChoreState.Unclaimed:
+                    lblStatus.Text = "Status: Unclaimed";
+                    break;
+                case ChoreState.Claimed:
+                    lblStatus.Text = "Status: Claimed";
+                    break;
+                case ChoreState.Pending:
+                    lblStatus.Text = "Status: Pending Review";
+                    break;
+            }
+
+            if (chore.GetClaimedBy() != DataFileHandler.Instance.GetLoggedInChild().GetId())
+            {
+                lblClaimedBy.Text = "Claimed by: " + DataFileHandler.Instance.GetChildById(chore.GetClaimedBy()).GetUsername();
             }
             else
-                comboAssignedTo.SelectedIndex = 0;
-            numAge.Text = chores[pointer].GetMinAge().ToString();
-            numPoints.Text = chores[pointer].GetReward().ToString();
-            lblPage.Text = (pointer + 1) + " / " + chores.Count;
+            {
+                lblClaimedBy.Text = "Claimed by: You";
+                btnSubmit.Enabled = true;
+            }
         }
 
         private void buttonPrevPage_Click(object sender, EventArgs e)
@@ -116,51 +98,57 @@ namespace ChoppyChores.forms.parent.chores
             }
             else pointer--;
 
-            txtChoreName.Text = chores[pointer].GetName();
-            var child = DataFileHandler.Instance.GetChildFromName(chores[pointer].GetClaimedBy());
-            if (child != null)
+            var chore = chores[pointer];
+
+            lblChoreName.Text = chore.GetName();
+            lblWorth.Text = "Worth " + chore.GetReward() + " Points";
+            lblAge.Text = "For children aged " + chore.GetMinAge() + " years old";
+            lblPage.Text = (pointer + 1) + " / " + chores.Count;
+
+            btnClaim.Enabled = false;
+            btnSubmit.Enabled = false;
+
+            switch (chore.GetStatus())
             {
-                comboAssignedTo.SelectedIndex = children.IndexOf(child);
+                case ChoreState.Unclaimed:
+                    lblStatus.Text = "Status: Unclaimed";
+                    break;
+                case ChoreState.Claimed:
+                    lblStatus.Text = "Status: Claimed";
+                    break;
+                case ChoreState.Pending:
+                    lblStatus.Text = "Status: Pending Review";
+                    break;
+            }
+
+            if (chore.GetClaimedBy() != DataFileHandler.Instance.GetLoggedInChild().GetId())
+            {
+                lblClaimedBy.Text = "Claimed by: " + DataFileHandler.Instance.GetChildById(chore.GetClaimedBy()).GetUsername();
             }
             else
-                comboAssignedTo.SelectedIndex = 0;
-            numAge.Text = chores[pointer].GetMinAge().ToString();
-            numPoints.Text = chores[pointer].GetReward().ToString();
-            lblPage.Text = (pointer + 1) + " / " + chores.Count;
+            {
+                lblClaimedBy.Text = "Claimed by: You";
+                btnSubmit.Enabled = true;
+            }
         }
 
-        private void buttonNewChore_Click(object sender, EventArgs e)
+        private void btnClaim_Click(object sender, EventArgs e)
         {
+            var chore = chores[pointer];
+            chore.SetClaimedBy(DataFileHandler.Instance.GetLoggedInChild().GetId());
+            chore.SetStatus(ChoreState.Claimed);
+            chore.Save();
+            MessageBox.Show("Chore claimed!");
+            LoadEverything();
+        }
 
-            if (txtChoreName.Text == "")
-            {
-                MessageBox.Show("Please enter a chore name");
-                return;
-            }
-            if (numAge.Text == "")
-            {
-                MessageBox.Show("Please enter a minimum age");
-                return;
-            }
-            if (numPoints.Text == "")
-            {
-                MessageBox.Show("Please enter a reward");
-                return;
-            }
-            String childID;
-            Console.WriteLine(comboAssignedTo.SelectedIndex);
-            if (comboAssignedTo.SelectedIndex == -1)
-            {
-                childID = "-1";
-                new Chore(DataFileHandler.Instance.FindNewId(StorageFiles.Chores), txtChoreName.Text, int.Parse(numPoints.Text), true, int.Parse(numAge.Text), childID, ChoreState.Unclaimed).Save();
-                LoadEverything();
-            }
-            else
-            {
-                childID = children[comboAssignedTo.SelectedIndex + 1].GetId();
-                new Chore(DataFileHandler.Instance.FindNewId(StorageFiles.Chores), txtChoreName.Text, int.Parse(numPoints.Text), false, int.Parse(numAge.Text), childID, ChoreState.Claimed).Save();
-                LoadEverything();
-            }
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            var chore = chores[pointer];
+            chore.SetStatus(ChoreState.Pending);
+            chore.Save();
+            MessageBox.Show("Chore submitted for review!");
+            LoadEverything();
         }
     }
 }

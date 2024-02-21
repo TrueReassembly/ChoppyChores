@@ -14,6 +14,7 @@ namespace ChoppyChores.data
         private const string AccountsFile = "./storage/Accounts.txt";
         private const string ChoresFile = "./storage/Chores.txt";
         private const string RewardsFile = "./storage/Rewards.txt";
+        private Child _currentChild;
 
         public enum ChoreSort
         {
@@ -352,6 +353,16 @@ namespace ChoppyChores.data
                 default:
                     return "";
             }
+        }
+
+        public void SetLoggedInChild(Child child)
+        {
+            _currentChild = child;
+        }
+
+        public Child GetLoggedInChild()
+        {
+            return _currentChild;
         }
     }
 }
