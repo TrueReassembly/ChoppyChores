@@ -64,7 +64,7 @@ namespace ChoppyChores
             }
 
             Console.WriteLine("-----------------------");
-            Application.Run(new ParentViewChoresPage());
+            Application.Run(new ChildViewChoresPage());
 
         }
     }

@@ -80,8 +80,6 @@ namespace ChoppyChores.models
                 lines = reader.ReadToEnd().Split('\n').ToList();
             });
 
-            lines.RemoveAll(string.IsNullOrWhiteSpace);
-
             if (lineToEdit == -1)
             {
                 var line = _id + ";" + _name + ";" + _reward + ";" +_public.ToString() + ";" + _claimedBy + ";" + _minAge + ";" + _state;
@@ -93,11 +91,23 @@ namespace ChoppyChores.models
                 // Ovewrite the iteration line with the new data
                 lines[lineToEdit] = _id + ";" + _name + ";" + _reward + ";" + _public.ToString() + ";" + _claimedBy + ";" + _minAge + ";" + _state;
             }
+
+            var newLines = new List<string>(lines.Count);
+            var a = "";
+            foreach (var line in newLines)
+            {
+                a = a + line + ", ";
+            }
+            Console.WriteLine(a);
             foreach (var line in lines)
             {
-                Console.WriteLine(line);
+                if (line.Split(';').Length > 6)
+                {
+                    newLines.Add(line.Trim());
+                }
             }
-            File.WriteAllLines(DataFileHandler.Instance.GetPath(StorageFiles.Chores), lines);
+            
+            File.WriteAllLines(DataFileHandler.Instance.GetPath(StorageFiles.Chores), newLines.ToArray());
         }
         
         public int GetReward()

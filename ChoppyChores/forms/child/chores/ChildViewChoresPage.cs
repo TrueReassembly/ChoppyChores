@@ -18,11 +18,13 @@ namespace ChoppyChores.forms.parent.chores
            
             
             InitializeComponent();
+            LoadEverything();
         }
 
         public void LoadEverything()
         {
             chores = DataFileHandler.Instance.GetAllChores();
+            Console.WriteLine(chores.Count);
             if (chores.Count == 0)
             {
                 lblChoreName.Text = "Unavailable";
@@ -39,29 +41,7 @@ namespace ChoppyChores.forms.parent.chores
             lblChoreName.Text = chore.GetName();
             lblWorth.Text = "Worth " + chore.GetReward() + " Points";
             lblAge.Text = "For children aged " + chore.GetMinAge() + " years old";
-            
-        }
-
-        private void ChildViewChoresPage_Load(object sender, EventArgs e)
-        {
-            LoadEverything();
-        }
-
-
-        private void buttonNextPage_Click(object sender, EventArgs e)
-        {
-            if (pointer == chores.Count - 1)
-            {
-                pointer = 0;
-            }
-            else pointer++;
-
-            var chore = chores[pointer];
-
-            lblChoreName.Text = chore.GetName();
-            lblWorth.Text = "Worth " + chore.GetReward() + " Points";
-            lblAge.Text = "For children aged " + chore.GetMinAge() + " years old";
-            lblPage.Text = (pointer + 1) + " / " + chores.Count;
+            lblChildChorePage.Text = (pointer + 1) + " / " + chores.Count;
 
             btnClaim.Enabled = false;
             btnSubmit.Enabled = false;
@@ -79,18 +59,67 @@ namespace ChoppyChores.forms.parent.chores
                     break;
             }
 
-            if (chore.GetClaimedBy() != DataFileHandler.Instance.GetLoggedInChild().GetId())
+            
+            if (chore.GetClaimedBy() != DataFileHandler.Instance.GetLoggedInChild().GetId() && chore.GetStatus() == ChoreState.Claimed)
             {
                 lblClaimedBy.Text = "Claimed by: " + DataFileHandler.Instance.GetChildById(chore.GetClaimedBy()).GetUsername();
             }
-            else
+            else if (chore.GetClaimedBy() == DataFileHandler.Instance.GetLoggedInChild().GetId())
             {
                 lblClaimedBy.Text = "Claimed by: You";
                 btnSubmit.Enabled = true;
             }
         }
 
-        private void buttonPrevPage_Click(object sender, EventArgs e)
+        private void ChildViewChoresPage_Load(object sender, EventArgs e)
+        {
+            LoadEverything();
+        }
+
+        private void btnNextPage_Click(object sender, EventArgs e)
+        {
+            if (pointer == chores.Count - 1)
+            {
+                pointer = 0;
+            }
+            else pointer++;
+
+            var chore = chores[pointer];
+
+            lblChoreName.Text = chore.GetName();
+            lblWorth.Text = "Worth " + chore.GetReward() + " Points";
+            lblAge.Text = "For children aged " + chore.GetMinAge() + " years old";
+            lblChildChorePage.Text = (pointer + 1) + " / " + chores.Count;
+
+            btnClaim.Enabled = false;
+            btnSubmit.Enabled = false;
+
+            switch (chore.GetStatus())
+            {
+                case ChoreState.Unclaimed:
+                    lblStatus.Text = "Status: Unclaimed";
+                    break;
+                case ChoreState.Claimed:
+                    lblStatus.Text = "Status: Claimed";
+                    break;
+                case ChoreState.Pending:
+                    lblStatus.Text = "Status: Pending Review";
+                    break;
+            }
+
+            if (chore.GetClaimedBy() != DataFileHandler.Instance.GetLoggedInChild().GetId() && chore.GetStatus() == ChoreState.Claimed)
+            {
+                lblClaimedBy.Text = "Claimed by: " + DataFileHandler.Instance.GetChildById(chore.GetClaimedBy()).GetUsername();
+            }
+            else if (chore.GetClaimedBy() == DataFileHandler.Instance.GetLoggedInChild().GetId())
+            {
+                lblClaimedBy.Text = "Claimed by: You";
+                btnSubmit.Enabled = true;
+            }
+            
+        }
+
+        private void btnPrevPage_Click(object sender, EventArgs e)
         {
             if (pointer == 0)
             {
@@ -103,7 +132,7 @@ namespace ChoppyChores.forms.parent.chores
             lblChoreName.Text = chore.GetName();
             lblWorth.Text = "Worth " + chore.GetReward() + " Points";
             lblAge.Text = "For children aged " + chore.GetMinAge() + " years old";
-            lblPage.Text = (pointer + 1) + " / " + chores.Count;
+            lblChildChorePage.Text = (pointer + 1) + " / " + chores.Count;
 
             btnClaim.Enabled = false;
             btnSubmit.Enabled = false;

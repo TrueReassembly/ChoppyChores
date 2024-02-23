@@ -362,7 +362,8 @@ namespace ChoppyChores.data
 
         public Child GetLoggedInChild()
         {
-            return _currentChild;
+            return GetAllChildren()[0];
+            // return; _currentChild
         }
     }
 }

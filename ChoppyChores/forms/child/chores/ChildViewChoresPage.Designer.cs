@@ -43,6 +43,7 @@ namespace ChoppyChores.forms.parent.chores
             this.btnPrevPage = new System.Windows.Forms.Button();
             this.btnNextPage = new System.Windows.Forms.Button();
             this.lblAge = new System.Windows.Forms.Label();
+            this.lblChildChorePage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnHome
@@ -87,7 +88,7 @@ namespace ChoppyChores.forms.parent.chores
             this.lblChoreName.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChoreName.Location = new System.Drawing.Point(330, 68);
             this.lblChoreName.Name = "lblChoreName";
-            this.lblChoreName.Size = new System.Drawing.Size(121, 44);
+            this.lblChoreName.Size = new System.Drawing.Size(122, 44);
             this.lblChoreName.TabIndex = 5;
             this.lblChoreName.Text = "label8";
             // 
@@ -173,10 +174,21 @@ namespace ChoppyChores.forms.parent.chores
             this.lblAge.Text = "For children aged s";
             this.lblAge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblChildChorePage
+            // 
+            this.lblChildChorePage.AutoSize = true;
+            this.lblChildChorePage.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChildChorePage.Location = new System.Drawing.Point(676, 64);
+            this.lblChildChorePage.Name = "lblChildChorePage";
+            this.lblChildChorePage.Size = new System.Drawing.Size(122, 44);
+            this.lblChildChorePage.TabIndex = 14;
+            this.lblChildChorePage.Text = "label8";
+            // 
             // ChildViewChoresPage
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblChildChorePage);
             this.Controls.Add(this.lblAge);
             this.Controls.Add(this.btnNextPage);
             this.Controls.Add(this.btnPrevPage);
@@ -231,5 +243,6 @@ namespace ChoppyChores.forms.parent.chores
         private System.Windows.Forms.Button btnPrevPage;
         private System.Windows.Forms.Button btnNextPage;
         private System.Windows.Forms.Label lblAge;
+        private System.Windows.Forms.Label lblChildChorePage;
     }
 }
