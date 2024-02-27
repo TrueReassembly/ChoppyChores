@@ -23,7 +23,7 @@ namespace ChoppyChores.models
             _reward = reward;
             _public = isPublic;
             _minAge = minAge;
-            _claimedBy = "-1";
+            _claimedBy = "18";
             _state = ChoreState.Unclaimed;
         }
 
