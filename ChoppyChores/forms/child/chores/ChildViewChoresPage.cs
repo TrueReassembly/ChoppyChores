@@ -40,7 +40,7 @@ namespace ChoppyChores.forms.parent.chores
             Chore chore = chores[pointer];
             lblChoreName.Text = chore.GetName();
             lblWorth.Text = "Worth " + chore.GetReward() + " Points";
-            lblAge.Text = "For children aged " + chore.GetMinAge() + " years old";
+            lblAge.Text = "For children aged at least  " + chore.GetMinAge() + " years old";
             lblChildChorePage.Text = (pointer + 1) + " / " + chores.Count;
 
             btnClaim.Enabled = false;
@@ -76,8 +76,9 @@ namespace ChoppyChores.forms.parent.chores
             LoadEverything();
         }
 
-        private void btnNextPage_Click(object sender, EventArgs e)
+        private void btnNextPageChildChore_Click_1(object sender, EventArgs e)
         {
+            Console.WriteLine("CALL");
             if (pointer == chores.Count - 1)
             {
                 pointer = 0;
@@ -88,7 +89,7 @@ namespace ChoppyChores.forms.parent.chores
 
             lblChoreName.Text = chore.GetName();
             lblWorth.Text = "Worth " + chore.GetReward() + " Points";
-            lblAge.Text = "For children aged " + chore.GetMinAge() + " years old";
+            lblAge.Text = "For children aged at least " + chore.GetMinAge() + " years old";
             lblChildChorePage.Text = (pointer + 1) + " / " + chores.Count;
 
             btnClaim.Enabled = false;
@@ -119,8 +120,9 @@ namespace ChoppyChores.forms.parent.chores
             
         }
 
-        private void btnPrevPage_Click(object sender, EventArgs e)
+        private void btnPrevPageChildChore_Click_1(object sender, EventArgs e)
         {
+            Console.WriteLine("CALL");
             if (pointer == 0)
             {
                 pointer = chores.Count - 1;
@@ -131,7 +133,7 @@ namespace ChoppyChores.forms.parent.chores
 
             lblChoreName.Text = chore.GetName();
             lblWorth.Text = "Worth " + chore.GetReward() + " Points";
-            lblAge.Text = "For children aged " + chore.GetMinAge() + " years old";
+            lblAge.Text = "For children aged at least " + chore.GetMinAge() + " years old";
             lblChildChorePage.Text = (pointer + 1) + " / " + chores.Count;
 
             btnClaim.Enabled = false;

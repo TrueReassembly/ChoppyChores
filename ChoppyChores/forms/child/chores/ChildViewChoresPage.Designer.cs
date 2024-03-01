@@ -40,8 +40,8 @@ namespace ChoppyChores.forms.parent.chores
             this.btnClaim = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
-            this.btnPrevPage = new System.Windows.Forms.Button();
-            this.btnNextPage = new System.Windows.Forms.Button();
+            this.btnPrevPageChildChore = new System.Windows.Forms.Button();
+            this.btnNextPageChildChore = new System.Windows.Forms.Button();
             this.lblAge = new System.Windows.Forms.Label();
             this.lblChildChorePage = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -145,23 +145,25 @@ namespace ChoppyChores.forms.parent.chores
             this.lblStatus.Text = "Status: z";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnPrevPage
+            // btnPrevPageChildChore
             // 
-            this.btnPrevPage.Location = new System.Drawing.Point(12, 370);
-            this.btnPrevPage.Name = "btnPrevPage";
-            this.btnPrevPage.Size = new System.Drawing.Size(103, 68);
-            this.btnPrevPage.TabIndex = 11;
-            this.btnPrevPage.Text = "<---";
-            this.btnPrevPage.UseVisualStyleBackColor = true;
+            this.btnPrevPageChildChore.Location = new System.Drawing.Point(12, 370);
+            this.btnPrevPageChildChore.Name = "btnPrevPageChildChore";
+            this.btnPrevPageChildChore.Size = new System.Drawing.Size(103, 68);
+            this.btnPrevPageChildChore.TabIndex = 11;
+            this.btnPrevPageChildChore.Text = "<---";
+            this.btnPrevPageChildChore.UseVisualStyleBackColor = true;
+            this.btnPrevPageChildChore.Click += new System.EventHandler(this.btnPrevPageChildChore_Click_1);
             // 
-            // btnNextPage
+            // btnNextPageChildChore
             // 
-            this.btnNextPage.Location = new System.Drawing.Point(685, 370);
-            this.btnNextPage.Name = "btnNextPage";
-            this.btnNextPage.Size = new System.Drawing.Size(103, 68);
-            this.btnNextPage.TabIndex = 12;
-            this.btnNextPage.Text = "--->";
-            this.btnNextPage.UseVisualStyleBackColor = true;
+            this.btnNextPageChildChore.Location = new System.Drawing.Point(685, 370);
+            this.btnNextPageChildChore.Name = "btnNextPageChildChore";
+            this.btnNextPageChildChore.Size = new System.Drawing.Size(103, 68);
+            this.btnNextPageChildChore.TabIndex = 12;
+            this.btnNextPageChildChore.Text = "--->";
+            this.btnNextPageChildChore.UseVisualStyleBackColor = true;
+            this.btnNextPageChildChore.Click += new System.EventHandler(this.btnNextPageChildChore_Click_1);
             // 
             // lblAge
             // 
@@ -190,8 +192,8 @@ namespace ChoppyChores.forms.parent.chores
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblChildChorePage);
             this.Controls.Add(this.lblAge);
-            this.Controls.Add(this.btnNextPage);
-            this.Controls.Add(this.btnPrevPage);
+            this.Controls.Add(this.btnNextPageChildChore);
+            this.Controls.Add(this.btnPrevPageChildChore);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.btnClaim);
@@ -240,8 +242,8 @@ namespace ChoppyChores.forms.parent.chores
         private System.Windows.Forms.Button btnClaim;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.Button btnPrevPage;
-        private System.Windows.Forms.Button btnNextPage;
+        private System.Windows.Forms.Button btnPrevPageChildChore;
+        private System.Windows.Forms.Button btnNextPageChildChore;
         private System.Windows.Forms.Label lblAge;
         private System.Windows.Forms.Label lblChildChorePage;
     }

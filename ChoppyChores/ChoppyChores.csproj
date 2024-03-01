@@ -70,6 +70,7 @@
     <Compile Include="models\Account.cs" />
     <Compile Include="models\AccountType.cs" />
     <Compile Include="models\Child.cs" />
+    <Compile Include="models\Parent.cs" />
     <Compile Include="models\Reward.cs" />
     <Compile Include="models\Chore.cs" />
     <Compile Include="models\ChoreState.cs" />
