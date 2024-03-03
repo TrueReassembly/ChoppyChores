@@ -310,7 +310,7 @@ namespace ChoppyChores.data
                     try {
                         temp.Add(reader.ReadLine().ToChore());
                     } 
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         continue;
                     }
@@ -366,6 +366,23 @@ namespace ChoppyChores.data
             // return; _currentChild
         }
 
-        public List<>
+        public List<Parent> GetParents()
+        {
+            List<Parent> parents = new List<Parent>();
+            RunReader(StorageFiles.Accounts, reader =>
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    if (line == null) continue;
+                    var split = line.Split(';');
+                    if (split[1].Equals("Parent"))
+                    {
+                        parents.Add(line.ToParent());
+                    }
+                }
+            });
+            return parents;
+        }
     }
 }

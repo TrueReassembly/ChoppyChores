@@ -27,14 +27,24 @@ namespace ChoppyChores
                     // this.Hide();
                     MessageBox.Show("Login Successful for " + child.GetUsername(), "a", MessageBoxButtons.OK);
                     DataFileHandler.Instance.SetLoggedInChild(child);
-                    new ChildViewChoresPage().Show();
+                    var childDashboard = new ChildViewChoresPage();
+                    childDashboard.ShowDialog();
                     Close();
                     
                     return;
                 }
             }
 
-            foreach(var parent in DataFileHandler.Instance.GetAll)
+            foreach(var parent in DataFileHandler.Instance.GetParents())
+            {
+                if (parent.GetUsername() == txtUsername.Text && parent.GetPassword() == parsedword)
+                {
+                    MessageBox.Show("Login Successful for " + parent.GetUsername(), "a", MessageBoxButtons.OK);
+                    // new ParentDashboard().Show();
+                    Close();
+                    return;
+                }
+            }
         }
     }
 }

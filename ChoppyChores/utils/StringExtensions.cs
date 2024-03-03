@@ -56,5 +56,18 @@ namespace ChoppyChores.utils
             }
             return Array.IndexOf(chars, first[iteration]) > Array.IndexOf(chars, second[iteration]);
         }
+
+        public static Parent ToParent(this string str)
+        {
+            var split = str.Split(';');
+            try
+            {
+                return new Parent(split[0], split[2], split[3]);
+            }
+            catch
+            {
+                throw new Exception("String '" + str + "' cannot be converted to a Parent");
+            }
+        }
     }
 }

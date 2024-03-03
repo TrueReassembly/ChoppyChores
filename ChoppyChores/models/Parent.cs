@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace ChoppyChores.models
 {
-    class Parent : Account
+    public class Parent : Account
     {
 
         public Parent(string username, string password) : base(AccountType.Parent, username, password) { }
+        
+        public Parent(string id, string username, string password) : base(AccountType.Parent, id, username, password) { }
         public override void Save()
         {
             var lineToEdit = -1;
