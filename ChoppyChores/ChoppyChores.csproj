@@ -55,17 +55,53 @@
     <Compile Include="forms\child\chores\ChildViewChoresPage.Designer.cs">
       <DependentUpon>ChildViewChoresPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\child\rewards\ChildViewRewards.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\child\rewards\ChildViewRewards.Designer.cs">
+      <DependentUpon>ChildViewRewards.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\loginpage\FirstAccountPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\loginpage\FirstAccountPage.Designer.cs">
+      <DependentUpon>FirstAccountPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\loginpage\LoginPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\loginpage\LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\parent\accounts\ParentViewAccountPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\parent\accounts\ParentViewAccountPage.Designer.cs">
+      <DependentUpon>ParentViewAccountPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\parent\chores\ParentViewChoresPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\parent\chores\ParentViewChoresPage.Designer.cs">
       <DependentUpon>ParentViewChoresPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\parent\chores\ParentViewPendingChores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\parent\chores\ParentViewPendingChores.Designer.cs">
+      <DependentUpon>ParentViewPendingChores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\parent\rewards\ParentViewPendingRewards.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\parent\rewards\ParentViewPendingRewards.Designer.cs">
+      <DependentUpon>ParentViewPendingRewards.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\parent\rewards\ParentViewRewards.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\parent\rewards\ParentViewRewards.Designer.cs">
+      <DependentUpon>ParentViewRewards.cs</DependentUpon>
     </Compile>
     <Compile Include="models\Account.cs" />
     <Compile Include="models\AccountType.cs" />
@@ -80,6 +116,9 @@
     <Compile Include="utils\StringExtensions.cs" />
     <EmbeddedResource Include="forms\child\chores\ChildViewChoresPage.resx">
       <DependentUpon>ChildViewChoresPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\loginpage\FirstAccountPage.resx">
+      <DependentUpon>FirstAccountPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\loginpage\LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
