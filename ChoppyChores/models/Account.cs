@@ -62,6 +62,11 @@ namespace ChoppyChores.models
             _id = id;
         }
         
+        public AccountType GetAccountType()
+        {
+            return _accountType;
+        }
+
         public abstract void Save();
     }
 }

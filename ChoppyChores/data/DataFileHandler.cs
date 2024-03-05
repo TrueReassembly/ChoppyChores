@@ -388,5 +388,25 @@ namespace ChoppyChores.data
 
             return accounts;
         }
+
+        public List<Parent> GetParents()
+        {
+            List<Parent> accounts = new List<Parent>();
+            RunReader(StorageFiles.Accounts, file =>
+            {
+                while (!file.EndOfStream)
+                {
+                    var line = file.ReadLine();
+                    if (line == null) continue;
+                    var split = line.Split(';');
+                    if (split[1].Equals("Parent"))
+                    {
+                        accounts.Add(line.ToParent());
+                    }
+                }
+            });
+
+            return accounts;
+        }
     }
 }

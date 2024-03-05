@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using ChoppyChores.data;
+using ChoppyChores.forms.loginpage;
 using ChoppyChores.forms.parent.chores;
 using ChoppyChores.models;
 using ChoppyChores.utils;
@@ -37,7 +38,7 @@ namespace ChoppyChores
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
+
             // If Data files do not exist, create them
             if (!File.Exists("./storage/Accounts.txt"))
             {
@@ -45,26 +46,26 @@ namespace ChoppyChores
                 File.Create("./storage/Accounts.txt").Close();
                 File.Create("./storage/Chores.txt").Close();
                 File.Create("./storage/Rewards.txt").Close();
-
-                new Chore(DataFileHandler.Instance.FindNewId(StorageFiles.Chores), chores[0], 5, true, 5).Save();
-                new Chore(DataFileHandler.Instance.FindNewId(StorageFiles.Chores), chores[1], 10, true, 10).Save();
-                new Chore(DataFileHandler.Instance.FindNewId(StorageFiles.Chores), chores[2], 15, true, 15).Save();
-
-                new Child("Jim", "Jim123", 10).Save();
-                new Child("Bob", "Bob123", 12).Save();
-                new Child("Sue", "Sue123", 14).Save();
             }
 
-            
-
-            
-            foreach (var child in DataFileHandler.Instance.GetAllChildren())
+            List<Account> accounts = DataFileHandler.Instance.GetAllAccounts();
+            if (accounts.Count == 0)
             {
-                Console.WriteLine(child.ToString());              
+                new FirstAccountPage().Show();
+                return;
             }
 
-            Console.WriteLine("-----------------------");
-            Application.Run(new LoginPage());
+            foreach(var account in accounts)
+            {
+                if (account.GetAccountType() == AccountType.Parent)
+                {
+                    Application.Run(new LoginPage());
+                    return;
+                }
+            }
+            
+
+            Application.Run(new FirstAccountPage());
 
         }
     }
