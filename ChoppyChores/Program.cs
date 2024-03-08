@@ -51,7 +51,7 @@ namespace ChoppyChores
             List<Account> accounts = DataFileHandler.Instance.GetAllAccounts();
             if (accounts.Count == 0)
             {
-                new FirstAccountPage().Show();
+                Application.Run(new FirstAccountPage());
                 return;
             }
 

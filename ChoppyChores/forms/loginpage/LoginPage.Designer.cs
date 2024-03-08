@@ -40,6 +40,7 @@ namespace ChoppyChores
             // 
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.Location = new System.Drawing.Point(322, 115);
+            this.txtUsername.Multiline = false;
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(672, 86);
             this.txtUsername.TabIndex = 0;
@@ -49,10 +50,13 @@ namespace ChoppyChores
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(322, 306);
+            this.txtPassword.Multiline = false;
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.txtPassword.Size = new System.Drawing.Size(672, 86);
             this.txtPassword.TabIndex = 1;
             this.txtPassword.Text = "";
+            this.txtPassword.WordWrap = false;
             // 
             // btnLogin
             // 

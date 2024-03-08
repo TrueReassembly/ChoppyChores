@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 using ChoppyChores.data;
+using ChoppyChores.forms.parent;
 using ChoppyChores.forms.parent.chores;
 using ChoppyChores.models;
 using ChoppyChores.utils;
@@ -13,6 +14,8 @@ namespace ChoppyChores
         public LoginPage()
         {
             InitializeComponent();
+
+            FormClosed += new FormClosedEventHandler(LoginPage_FormClosed);
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -27,24 +30,28 @@ namespace ChoppyChores
                     // this.Hide();
                     MessageBox.Show("Login Successful for " + child.GetUsername(), "a", MessageBoxButtons.OK);
                     DataFileHandler.Instance.SetLoggedInChild(child);
+                    Hide();
                     var childDashboard = new ChildViewChoresPage();
                     childDashboard.ShowDialog();
-                    Close();
-                    
                     return;
                 }
             }
 
-            foreach(var parent in DataFileHandler.Instance.GetParents())
+            foreach (var parent in DataFileHandler.Instance.GetParents())
             {
                 if (parent.GetUsername() == txtUsername.Text && parent.GetPassword() == parsedword)
                 {
-                    MessageBox.Show("Login Successful for " + parent.GetUsername(), "a", MessageBoxButtons.OK);
-                    // new ParentDashboard().Show();
-                    Close();
+                    MessageBox.Show("Login Successful for " + parent.GetUsername(), ".", MessageBoxButtons.OK);
+                    Hide();
+                    new ParentDashboard().ShowDialog();
                     return;
                 }
             }
+        }
+
+        void LoginPage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

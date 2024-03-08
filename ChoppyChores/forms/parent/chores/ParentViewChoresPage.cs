@@ -19,6 +19,8 @@ namespace ChoppyChores.forms.parent.chores
             children = DataFileHandler.Instance.GetChildrenSortedByName();
             
             InitializeComponent();
+
+            FormClosed += new FormClosedEventHandler(ParentViewChoresPage_FormClosed);
         }
 
         public void LoadEverything()
@@ -171,6 +173,11 @@ namespace ChoppyChores.forms.parent.chores
                 new Chore(DataFileHandler.Instance.FindNewId(StorageFiles.Chores), txtChoreName.Text, int.Parse(numPoints.Text), false, int.Parse(numAge.Text), childID, ChoreState.Claimed).Save();
                 LoadEverything();
             }
+        }
+
+        void ParentViewChoresPage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

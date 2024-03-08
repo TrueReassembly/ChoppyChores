@@ -91,6 +91,12 @@
     <Compile Include="forms\parent\chores\ParentViewPendingChores.Designer.cs">
       <DependentUpon>ParentViewPendingChores.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\parent\ParentDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\parent\ParentDashboard.Designer.cs">
+      <DependentUpon>ParentDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\parent\rewards\ParentViewPendingRewards.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\parent\chores\ParentViewChoresPage.resx">
       <DependentUpon>ParentViewChoresPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\parent\ParentDashboard.resx">
+      <DependentUpon>ParentDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
