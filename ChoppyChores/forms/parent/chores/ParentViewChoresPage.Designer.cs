@@ -122,6 +122,7 @@ namespace ChoppyChores.forms.parent.chores
             this.buttonHome.TabIndex = 6;
             this.buttonHome.Text = "Home";
             this.buttonHome.UseVisualStyleBackColor = true;
+            this.buttonHome.Click += new System.EventHandler(this.buttonHome_Click);
             // 
             // buttonChores
             // 
@@ -131,6 +132,7 @@ namespace ChoppyChores.forms.parent.chores
             this.buttonChores.TabIndex = 7;
             this.buttonChores.Text = "Chores";
             this.buttonChores.UseVisualStyleBackColor = true;
+            this.buttonChores.Click += new System.EventHandler(this.buttonChores_Click);
             // 
             // buttonAccounts
             // 
@@ -140,6 +142,7 @@ namespace ChoppyChores.forms.parent.chores
             this.buttonAccounts.TabIndex = 8;
             this.buttonAccounts.Text = "Accounts";
             this.buttonAccounts.UseVisualStyleBackColor = true;
+            this.buttonAccounts.Click += new System.EventHandler(this.buttonAccounts_Click);
             // 
             // buttonRewards
             // 
@@ -149,6 +152,7 @@ namespace ChoppyChores.forms.parent.chores
             this.buttonRewards.TabIndex = 9;
             this.buttonRewards.Text = "Rewards";
             this.buttonRewards.UseVisualStyleBackColor = true;
+            this.buttonRewards.Click += new System.EventHandler(this.buttonRewards_Click);
             // 
             // label1
             // 
@@ -218,8 +222,7 @@ namespace ChoppyChores.forms.parent.chores
             // 
             this.comboAssignedTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboAssignedTo.FormattingEnabled = true;
-            this.comboAssignedTo.Items.AddRange(new object[] {
-            ""});
+            this.comboAssignedTo.Items.AddRange(new object[] { "" });
             this.comboAssignedTo.Location = new System.Drawing.Point(33, 129);
             this.comboAssignedTo.Name = "comboAssignedTo";
             this.comboAssignedTo.Size = new System.Drawing.Size(121, 21);
@@ -279,7 +282,6 @@ namespace ChoppyChores.forms.parent.chores
             ((System.ComponentModel.ISupportInitialize)(this.numAge)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

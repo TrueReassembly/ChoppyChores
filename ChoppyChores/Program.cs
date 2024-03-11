@@ -46,6 +46,7 @@ namespace ChoppyChores
                 File.Create("./storage/Accounts.txt").Close();
                 File.Create("./storage/Chores.txt").Close();
                 File.Create("./storage/Rewards.txt").Close();
+                File.Create("./storage/PendingRewards.txt").Close();
             }
 
             List<Account> accounts = DataFileHandler.Instance.GetAllAccounts();

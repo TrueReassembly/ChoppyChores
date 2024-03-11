@@ -129,11 +129,20 @@
     <EmbeddedResource Include="forms\loginpage\LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\parent\accounts\ParentViewAccountPage.resx">
+      <DependentUpon>ParentViewAccountPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\parent\chores\ParentViewChoresPage.resx">
       <DependentUpon>ParentViewChoresPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\parent\chores\ParentViewPendingChores.resx">
+      <DependentUpon>ParentViewPendingChores.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\parent\ParentDashboard.resx">
       <DependentUpon>ParentDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\parent\rewards\ParentViewRewards.resx">
+      <DependentUpon>ParentViewRewards.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -4,6 +4,7 @@ namespace ChoppyChores.data
     {
         Accounts,
         Chores,
-        Rewards
+        Rewards,
+        PendingRewards
     }
 }

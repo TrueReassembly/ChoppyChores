@@ -29,11 +29,222 @@ namespace ChoppyChores.forms.parent.chores
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentViewPendingChores));
+            this.label6 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonRewards = new System.Windows.Forms.Button();
+            this.buttonAccounts = new System.Windows.Forms.Button();
+            this.buttonChores = new System.Windows.Forms.Button();
+            this.buttonHome = new System.Windows.Forms.Button();
+            this.button = new System.Windows.Forms.Label();
+            this.buttonNewChore = new System.Windows.Forms.Button();
+            this.buttonSaveChore = new System.Windows.Forms.Button();
+            this.buttonPrevPage = new System.Windows.Forms.Button();
+            this.buttonNextPage = new System.Windows.Forms.Button();
+            this.lbl_AssignedTo = new System.Windows.Forms.Label();
+            this.lbl_ChoreName = new System.Windows.Forms.Label();
+            this.lbl_Worth = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F);
+            this.label6.ForeColor = System.Drawing.SystemColors.Control;
+            this.label6.Location = new System.Drawing.Point(285, 131);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(198, 39);
+            this.label6.TabIndex = 39;
+            this.label6.Text = "Assigned to";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(327, 202);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 39);
+            this.label2.TabIndex = 33;
+            this.label2.Text = "Worth:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(260, 60);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(223, 39);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "Chore Name:";
+            // 
+            // buttonRewards
+            // 
+            this.buttonRewards.Location = new System.Drawing.Point(598, 5);
+            this.buttonRewards.Name = "buttonRewards";
+            this.buttonRewards.Size = new System.Drawing.Size(196, 47);
+            this.buttonRewards.TabIndex = 30;
+            this.buttonRewards.Text = "Rewards";
+            this.buttonRewards.UseVisualStyleBackColor = true;
+            this.buttonRewards.Click += new System.EventHandler(this.buttonRewards_Click);
+            // 
+            // buttonAccounts
+            // 
+            this.buttonAccounts.Location = new System.Drawing.Point(396, 5);
+            this.buttonAccounts.Name = "buttonAccounts";
+            this.buttonAccounts.Size = new System.Drawing.Size(196, 47);
+            this.buttonAccounts.TabIndex = 29;
+            this.buttonAccounts.Text = "Accounts";
+            this.buttonAccounts.UseVisualStyleBackColor = true;
+            this.buttonAccounts.Click += new System.EventHandler(this.buttonAccounts_Click);
+            // 
+            // buttonChores
+            // 
+            this.buttonChores.Location = new System.Drawing.Point(206, 5);
+            this.buttonChores.Name = "buttonChores";
+            this.buttonChores.Size = new System.Drawing.Size(184, 47);
+            this.buttonChores.TabIndex = 28;
+            this.buttonChores.Text = "Chores";
+            this.buttonChores.UseVisualStyleBackColor = true;
+            // 
+            // buttonHome
+            // 
+            this.buttonHome.Location = new System.Drawing.Point(4, 5);
+            this.buttonHome.Name = "buttonHome";
+            this.buttonHome.Size = new System.Drawing.Size(196, 47);
+            this.buttonHome.TabIndex = 27;
+            this.buttonHome.Text = "Home";
+            this.buttonHome.UseVisualStyleBackColor = true;
+            this.buttonHome.Click += new System.EventHandler(this.buttonHome_Click);
+            // 
+            // button
+            // 
+            this.button.AutoSize = true;
+            this.button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.button.Location = new System.Drawing.Point(-83, 47);
+            this.button.Name = "button";
+            this.button.Size = new System.Drawing.Size(2287, 13);
+            this.button.TabIndex = 26;
+            this.button.Text = resources.GetString("button.Text");
+            // 
+            // buttonNewChore
+            // 
+            this.buttonNewChore.Location = new System.Drawing.Point(129, 367);
+            this.buttonNewChore.Name = "buttonNewChore";
+            this.buttonNewChore.Size = new System.Drawing.Size(273, 74);
+            this.buttonNewChore.TabIndex = 24;
+            this.buttonNewChore.Text = "New Chore";
+            this.buttonNewChore.UseVisualStyleBackColor = true;
+            // 
+            // buttonSaveChore
+            // 
+            this.buttonSaveChore.Location = new System.Drawing.Point(402, 367);
+            this.buttonSaveChore.Name = "buttonSaveChore";
+            this.buttonSaveChore.Size = new System.Drawing.Size(273, 74);
+            this.buttonSaveChore.TabIndex = 23;
+            this.buttonSaveChore.Text = "Save Chore";
+            this.buttonSaveChore.UseVisualStyleBackColor = true;
+            // 
+            // buttonPrevPage
+            // 
+            this.buttonPrevPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPrevPage.Location = new System.Drawing.Point(14, 367);
+            this.buttonPrevPage.Name = "buttonPrevPage";
+            this.buttonPrevPage.Size = new System.Drawing.Size(113, 74);
+            this.buttonPrevPage.TabIndex = 22;
+            this.buttonPrevPage.Text = "<--";
+            this.buttonPrevPage.UseVisualStyleBackColor = true;
+            // 
+            // buttonNextPage
+            // 
+            this.buttonNextPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNextPage.Location = new System.Drawing.Point(677, 367);
+            this.buttonNextPage.Name = "buttonNextPage";
+            this.buttonNextPage.Size = new System.Drawing.Size(113, 74);
+            this.buttonNextPage.TabIndex = 21;
+            this.buttonNextPage.Text = "-->";
+            this.buttonNextPage.UseVisualStyleBackColor = true;
+            // 
+            // lbl_AssignedTo
+            // 
+            this.lbl_AssignedTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_AssignedTo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbl_AssignedTo.Location = new System.Drawing.Point(347, 170);
+            this.lbl_AssignedTo.Name = "lbl_AssignedTo";
+            this.lbl_AssignedTo.Size = new System.Drawing.Size(74, 18);
+            this.lbl_AssignedTo.TabIndex = 41;
+            this.lbl_AssignedTo.Text = "label7";
+            this.lbl_AssignedTo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_ChoreName
+            // 
+            this.lbl_ChoreName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_ChoreName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbl_ChoreName.Location = new System.Drawing.Point(347, 99);
+            this.lbl_ChoreName.Name = "lbl_ChoreName";
+            this.lbl_ChoreName.Size = new System.Drawing.Size(74, 18);
+            this.lbl_ChoreName.TabIndex = 42;
+            this.lbl_ChoreName.Text = "label7";
+            // 
+            // lbl_Worth
+            // 
+            this.lbl_Worth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Worth.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbl_Worth.Location = new System.Drawing.Point(347, 241);
+            this.lbl_Worth.Name = "lbl_Worth";
+            this.lbl_Worth.Size = new System.Drawing.Size(74, 18);
+            this.lbl_Worth.TabIndex = 43;
+            this.lbl_Worth.Text = "label7";
+            this.lbl_Worth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ParentViewPendingChores
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbl_Worth);
+            this.Controls.Add(this.lbl_ChoreName);
+            this.Controls.Add(this.lbl_AssignedTo);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonRewards);
+            this.Controls.Add(this.buttonAccounts);
+            this.Controls.Add(this.buttonChores);
+            this.Controls.Add(this.buttonHome);
+            this.Controls.Add(this.button);
+            this.Controls.Add(this.buttonNewChore);
+            this.Controls.Add(this.buttonSaveChore);
+            this.Controls.Add(this.buttonPrevPage);
+            this.Controls.Add(this.buttonNextPage);
+            this.Name = "ParentViewPendingChores";
             this.Text = "ParentViewPendingChores";
+            this.ResumeLayout(false);
+            this.PerformLayout();
         }
+
+        private System.Windows.Forms.Label lbl_ChoreName;
+
+        private System.Windows.Forms.Label lbl_AssignedTo;
+
+        private System.Windows.Forms.Label lbl_Worth;
+
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonRewards;
+        private System.Windows.Forms.Button buttonAccounts;
+        private System.Windows.Forms.Button buttonChores;
+        private System.Windows.Forms.Button buttonHome;
+        private System.Windows.Forms.Label button;
+        private System.Windows.Forms.Button buttonNewChore;
+        private System.Windows.Forms.Button buttonSaveChore;
+        private System.Windows.Forms.Button buttonPrevPage;
+        private System.Windows.Forms.Button buttonNextPage;
 
         #endregion
     }

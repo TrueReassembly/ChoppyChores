@@ -145,7 +145,6 @@ namespace ChoppyChores.forms.parent
             this.Text = "ParentDashboard";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

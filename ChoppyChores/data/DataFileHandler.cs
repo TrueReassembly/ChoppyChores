@@ -14,6 +14,7 @@ namespace ChoppyChores.data
         private const string AccountsFile = "./storage/Accounts.txt";
         private const string ChoresFile = "./storage/Chores.txt";
         private const string RewardsFile = "./storage/Rewards.txt";
+        private const string PendingRewardsFile = "./storage/PendingRewards.txt";
         private Child _currentChild;
 
         public enum ChoreSort
@@ -407,6 +408,37 @@ namespace ChoppyChores.data
             });
 
             return accounts;
+        }
+
+        public List<Chore> GetPendingChores()
+        {
+            var chores = GetAllChores();
+            var toReturn = new List<Chore>();
+            foreach (var chore in chores)
+            {
+                if (chore.GetStatus().Equals(ChoreState.Pending))
+                {
+                    toReturn.Add(chore);
+                }
+            }
+
+            return toReturn;
+        }
+        
+        public List<Reward> GetAllRewards()
+        {
+            List<Reward> rewards = new List<Reward>();
+            RunReader(StorageFiles.Rewards, reader =>
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    if (line == null) continue;
+                    var split = line.Split(';');
+                    rewards.Add(new Reward(split[0], split[1], int.Parse(split[2])));
+                }
+            });
+            return rewards;
         }
     }
 }

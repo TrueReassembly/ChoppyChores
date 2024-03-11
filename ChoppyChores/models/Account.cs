@@ -43,7 +43,6 @@ namespace ChoppyChores.models
         public void ResetPassword(string rawPassword)
         {
             _password = GeneralUtils.ComputeHash(rawPassword);
-            // Add Saving
         }
         
         protected Account(AccountType type, string username, string password)

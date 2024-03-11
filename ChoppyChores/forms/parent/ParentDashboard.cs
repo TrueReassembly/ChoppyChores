@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using ChoppyChores.forms;
 
 namespace ChoppyChores.forms.parent
 {

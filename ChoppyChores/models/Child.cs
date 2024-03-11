@@ -80,5 +80,25 @@ namespace ChoppyChores.models
                 }
             });
         }
+        
+        public int GetAge()
+        {
+            return _age;
+        }
+        
+        public int GetPoints()
+        {
+            return _points;
+        }
+        
+        public void SetAge(int age)
+        {
+            _age = age;
+        }
+        
+        public void SetPoints(int points)
+        {
+            _points = points;
+        }
     }
 }

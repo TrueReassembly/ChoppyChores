@@ -179,5 +179,24 @@ namespace ChoppyChores.forms.parent.chores
         {
             Application.Exit();
         }
+
+
+        private void buttonHome_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new ParentDashboard().ShowDialog();
+        }
+
+        private void buttonAccounts_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new accounts.ParentViewAccountPage().ShowDialog();
+        }
+
+        private void buttonRewards_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new rewards.ParentViewRewards().ShowDialog();
+        }
     }
 }
