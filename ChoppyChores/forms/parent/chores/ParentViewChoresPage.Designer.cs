@@ -132,7 +132,6 @@ namespace ChoppyChores.forms.parent.chores
             this.buttonChores.TabIndex = 7;
             this.buttonChores.Text = "Chores";
             this.buttonChores.UseVisualStyleBackColor = true;
-            this.buttonChores.Click += new System.EventHandler(this.buttonChores_Click);
             // 
             // buttonAccounts
             // 
@@ -222,7 +221,8 @@ namespace ChoppyChores.forms.parent.chores
             // 
             this.comboAssignedTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboAssignedTo.FormattingEnabled = true;
-            this.comboAssignedTo.Items.AddRange(new object[] { "" });
+            this.comboAssignedTo.Items.AddRange(new object[] {
+            ""});
             this.comboAssignedTo.Location = new System.Drawing.Point(33, 129);
             this.comboAssignedTo.Name = "comboAssignedTo";
             this.comboAssignedTo.Size = new System.Drawing.Size(121, 21);
@@ -282,6 +282,7 @@ namespace ChoppyChores.forms.parent.chores
             ((System.ComponentModel.ISupportInitialize)(this.numAge)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
