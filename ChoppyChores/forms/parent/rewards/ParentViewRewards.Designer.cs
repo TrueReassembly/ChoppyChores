@@ -93,7 +93,6 @@ namespace ChoppyChores.forms.parent.rewards
             this.buttonRewards.TabIndex = 30;
             this.buttonRewards.Text = "Rewards";
             this.buttonRewards.UseVisualStyleBackColor = true;
-            this.buttonRewards.Click += new System.EventHandler(this.buttonRewards_Click);
             // 
             // buttonAccounts
             // 
