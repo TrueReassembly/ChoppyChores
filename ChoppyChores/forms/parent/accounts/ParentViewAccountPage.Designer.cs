@@ -208,7 +208,11 @@ namespace ChoppyChores.forms.parent.accounts
             // num_Points
             // 
             this.num_Points.Location = new System.Drawing.Point(289, 119);
-            this.num_Points.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
+            this.num_Points.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.num_Points.Name = "num_Points";
             this.num_Points.Size = new System.Drawing.Size(49, 20);
             this.num_Points.TabIndex = 27;
@@ -242,6 +246,7 @@ namespace ChoppyChores.forms.parent.accounts
             ((System.ComponentModel.ISupportInitialize)(this.num_Points)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.Label label5;

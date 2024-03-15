@@ -49,6 +49,12 @@
   <ItemGroup>
     <Compile Include="data\DataFileHandler.cs" />
     <Compile Include="data\StorageFiles.cs" />
+    <Compile Include="forms\child\ChildDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\child\ChildDashboard.Designer.cs">
+      <DependentUpon>ChildDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\child\chores\ChildViewChoresPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,8 +126,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="utils\GeneralUtils.cs" />
     <Compile Include="utils\StringExtensions.cs" />
+    <EmbeddedResource Include="forms\child\ChildDashboard.resx">
+      <DependentUpon>ChildDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\child\chores\ChildViewChoresPage.resx">
       <DependentUpon>ChildViewChoresPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\child\rewards\ChildViewRewards.resx">
+      <DependentUpon>ChildViewRewards.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\loginpage\FirstAccountPage.resx">
       <DependentUpon>FirstAccountPage.cs</DependentUpon>
@@ -140,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\parent\ParentDashboard.resx">
       <DependentUpon>ParentDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\parent\rewards\ParentViewPendingRewards.resx">
+      <DependentUpon>ParentViewPendingRewards.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\parent\rewards\ParentViewRewards.resx">
       <DependentUpon>ParentViewRewards.cs</DependentUpon>

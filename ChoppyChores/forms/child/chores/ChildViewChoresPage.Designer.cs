@@ -76,9 +76,10 @@ namespace ChoppyChores.forms.parent.chores
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(-64, 55);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(1087, 13);
+            this.label7.Size = new System.Drawing.Size(1447, 13);
             this.label7.TabIndex = 4;
             this.label7.Text = resources.GetString("label7.Text");
             // 
@@ -205,6 +206,7 @@ namespace ChoppyChores.forms.parent.chores
             this.Controls.Add(this.btnChores);
             this.Controls.Add(this.btnHome);
             this.Name = "ChildViewChoresPage";
+            this.Text = "View Chores";
             this.ResumeLayout(false);
             this.PerformLayout();
 
