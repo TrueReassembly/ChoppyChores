@@ -39,7 +39,7 @@ namespace ChoppyChores.forms.parent.rewards
             this.buttonChores = new System.Windows.Forms.Button();
             this.buttonHome = new System.Windows.Forms.Button();
             this.button = new System.Windows.Forms.Label();
-            this.txtChoreName = new System.Windows.Forms.TextBox();
+            this.txtRewardName = new System.Windows.Forms.TextBox();
             this.buttonNewChore = new System.Windows.Forms.Button();
             this.buttonSaveChore = new System.Windows.Forms.Button();
             this.buttonPrevPage = new System.Windows.Forms.Button();
@@ -81,9 +81,9 @@ namespace ChoppyChores.forms.parent.rewards
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
             this.label1.Location = new System.Drawing.Point(32, 67);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.Size = new System.Drawing.Size(78, 13);
             this.label1.TabIndex = 31;
-            this.label1.Text = "Chore Name:";
+            this.label1.Text = "Reward Name:";
             // 
             // buttonRewards
             // 
@@ -135,12 +135,12 @@ namespace ChoppyChores.forms.parent.rewards
             this.button.TabIndex = 26;
             this.button.Text = resources.GetString("button.Text");
             // 
-            // txtChoreName
+            // txtRewardName
             // 
-            this.txtChoreName.Location = new System.Drawing.Point(35, 83);
-            this.txtChoreName.Name = "txtChoreName";
-            this.txtChoreName.Size = new System.Drawing.Size(251, 20);
-            this.txtChoreName.TabIndex = 25;
+            this.txtRewardName.Location = new System.Drawing.Point(35, 83);
+            this.txtRewardName.Name = "txtRewardName";
+            this.txtRewardName.Size = new System.Drawing.Size(251, 20);
+            this.txtRewardName.TabIndex = 25;
             // 
             // buttonNewChore
             // 
@@ -169,6 +169,7 @@ namespace ChoppyChores.forms.parent.rewards
             this.buttonPrevPage.TabIndex = 22;
             this.buttonPrevPage.Text = "<--";
             this.buttonPrevPage.UseVisualStyleBackColor = true;
+            this.buttonPrevPage.Click += new System.EventHandler(this.buttonPrevPage_Click);
             // 
             // buttonNextPage
             // 
@@ -179,6 +180,7 @@ namespace ChoppyChores.forms.parent.rewards
             this.buttonNextPage.TabIndex = 21;
             this.buttonNextPage.Text = "-->";
             this.buttonNextPage.UseVisualStyleBackColor = true;
+            this.buttonNextPage.Click += new System.EventHandler(this.buttonNextPage_Click_1);
             // 
             // button_ViewPending
             // 
@@ -188,6 +190,7 @@ namespace ChoppyChores.forms.parent.rewards
             this.button_ViewPending.TabIndex = 35;
             this.button_ViewPending.Text = "View Pending Rewards";
             this.button_ViewPending.UseVisualStyleBackColor = true;
+            this.button_ViewPending.Click += new System.EventHandler(this.button_ViewPending_Click);
             // 
             // ParentViewRewards
             // 
@@ -205,7 +208,7 @@ namespace ChoppyChores.forms.parent.rewards
             this.Controls.Add(this.buttonChores);
             this.Controls.Add(this.buttonHome);
             this.Controls.Add(this.button);
-            this.Controls.Add(this.txtChoreName);
+            this.Controls.Add(this.txtRewardName);
             this.Controls.Add(this.buttonNewChore);
             this.Controls.Add(this.buttonSaveChore);
             this.Controls.Add(this.buttonPrevPage);
@@ -228,7 +231,7 @@ namespace ChoppyChores.forms.parent.rewards
         private System.Windows.Forms.Button buttonChores;
         private System.Windows.Forms.Button buttonHome;
         private System.Windows.Forms.Label button;
-        private System.Windows.Forms.TextBox txtChoreName;
+        private System.Windows.Forms.TextBox txtRewardName;
         private System.Windows.Forms.Button buttonNewChore;
         private System.Windows.Forms.Button buttonSaveChore;
         private System.Windows.Forms.Button buttonPrevPage;

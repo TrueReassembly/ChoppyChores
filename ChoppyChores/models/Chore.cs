@@ -50,8 +50,6 @@ namespace ChoppyChores.models
 
         public void Save()
         {
-
-            Console.WriteLine("SAVING CHORE");
             var lineToEdit = -1;
 
             DataFileHandler.Instance.RunReader(StorageFiles.Chores, reader =>
@@ -93,12 +91,6 @@ namespace ChoppyChores.models
             }
 
             var newLines = new List<string>(lines.Count);
-            var a = "";
-            foreach (var line in newLines)
-            {
-                a = a + line + ", ";
-            }
-            Console.WriteLine(a);
             foreach (var line in lines)
             {
                 if (line.Split(';').Length > 6)
@@ -108,6 +100,14 @@ namespace ChoppyChores.models
             }
             
             File.WriteAllLines(DataFileHandler.Instance.GetPath(StorageFiles.Chores), newLines.ToArray());
+        }
+
+        public void Delete()
+        {
+            List<string> allChores = new List<string>();
+            DataFileHandler.Instance.RunReader(StorageFiles.Chores, reader => allChores = reader.ReadToEnd().Split('\n').ToList());
+            allChores.RemoveAll(x => x.StartsWith(_id));
+            File.WriteAllLines(DataFileHandler.Instance.GetPath(StorageFiles.Chores), allChores.ToArray());
         }
         
         public int GetReward()

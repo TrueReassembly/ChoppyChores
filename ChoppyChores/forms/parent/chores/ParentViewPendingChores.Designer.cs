@@ -38,8 +38,8 @@ namespace ChoppyChores.forms.parent.chores
             this.buttonChores = new System.Windows.Forms.Button();
             this.buttonHome = new System.Windows.Forms.Button();
             this.button = new System.Windows.Forms.Label();
-            this.buttonNewChore = new System.Windows.Forms.Button();
-            this.buttonSaveChore = new System.Windows.Forms.Button();
+            this.buttonAcceptChore = new System.Windows.Forms.Button();
+            this.buttonRejectChore = new System.Windows.Forms.Button();
             this.buttonPrevPage = new System.Windows.Forms.Button();
             this.buttonNextPage = new System.Windows.Forms.Button();
             this.lbl_AssignedTo = new System.Windows.Forms.Label();
@@ -108,6 +108,7 @@ namespace ChoppyChores.forms.parent.chores
             this.buttonChores.TabIndex = 28;
             this.buttonChores.Text = "Chores";
             this.buttonChores.UseVisualStyleBackColor = true;
+            this.buttonChores.Click += new System.EventHandler(this.buttonChores_Click);
             // 
             // buttonHome
             // 
@@ -130,23 +131,25 @@ namespace ChoppyChores.forms.parent.chores
             this.button.TabIndex = 26;
             this.button.Text = resources.GetString("button.Text");
             // 
-            // buttonNewChore
+            // buttonAcceptChore
             // 
-            this.buttonNewChore.Location = new System.Drawing.Point(129, 367);
-            this.buttonNewChore.Name = "buttonNewChore";
-            this.buttonNewChore.Size = new System.Drawing.Size(273, 74);
-            this.buttonNewChore.TabIndex = 24;
-            this.buttonNewChore.Text = "New Chore";
-            this.buttonNewChore.UseVisualStyleBackColor = true;
+            this.buttonAcceptChore.Location = new System.Drawing.Point(129, 367);
+            this.buttonAcceptChore.Name = "buttonAcceptChore";
+            this.buttonAcceptChore.Size = new System.Drawing.Size(273, 74);
+            this.buttonAcceptChore.TabIndex = 24;
+            this.buttonAcceptChore.Text = "Accept Chore";
+            this.buttonAcceptChore.UseVisualStyleBackColor = true;
+            this.buttonAcceptChore.Click += new System.EventHandler(this.buttonAcceptChore_Click);
             // 
-            // buttonSaveChore
+            // buttonRejectChore
             // 
-            this.buttonSaveChore.Location = new System.Drawing.Point(402, 367);
-            this.buttonSaveChore.Name = "buttonSaveChore";
-            this.buttonSaveChore.Size = new System.Drawing.Size(273, 74);
-            this.buttonSaveChore.TabIndex = 23;
-            this.buttonSaveChore.Text = "Save Chore";
-            this.buttonSaveChore.UseVisualStyleBackColor = true;
+            this.buttonRejectChore.Location = new System.Drawing.Point(402, 367);
+            this.buttonRejectChore.Name = "buttonRejectChore";
+            this.buttonRejectChore.Size = new System.Drawing.Size(273, 74);
+            this.buttonRejectChore.TabIndex = 23;
+            this.buttonRejectChore.Text = "Reject Chore";
+            this.buttonRejectChore.UseVisualStyleBackColor = true;
+            this.buttonRejectChore.Click += new System.EventHandler(this.buttonRejectChore_Click);
             // 
             // buttonPrevPage
             // 
@@ -157,6 +160,7 @@ namespace ChoppyChores.forms.parent.chores
             this.buttonPrevPage.TabIndex = 22;
             this.buttonPrevPage.Text = "<--";
             this.buttonPrevPage.UseVisualStyleBackColor = true;
+            this.buttonPrevPage.Click += new System.EventHandler(this.buttonPrevPage_Click);
             // 
             // buttonNextPage
             // 
@@ -167,6 +171,7 @@ namespace ChoppyChores.forms.parent.chores
             this.buttonNextPage.TabIndex = 21;
             this.buttonNextPage.Text = "-->";
             this.buttonNextPage.UseVisualStyleBackColor = true;
+            this.buttonNextPage.Click += new System.EventHandler(this.buttonNextPage_Click);
             // 
             // lbl_AssignedTo
             // 
@@ -217,8 +222,8 @@ namespace ChoppyChores.forms.parent.chores
             this.Controls.Add(this.buttonChores);
             this.Controls.Add(this.buttonHome);
             this.Controls.Add(this.button);
-            this.Controls.Add(this.buttonNewChore);
-            this.Controls.Add(this.buttonSaveChore);
+            this.Controls.Add(this.buttonAcceptChore);
+            this.Controls.Add(this.buttonRejectChore);
             this.Controls.Add(this.buttonPrevPage);
             this.Controls.Add(this.buttonNextPage);
             this.Name = "ParentViewPendingChores";
@@ -241,8 +246,8 @@ namespace ChoppyChores.forms.parent.chores
         private System.Windows.Forms.Button buttonChores;
         private System.Windows.Forms.Button buttonHome;
         private System.Windows.Forms.Label button;
-        private System.Windows.Forms.Button buttonNewChore;
-        private System.Windows.Forms.Button buttonSaveChore;
+        private System.Windows.Forms.Button buttonAcceptChore;
+        private System.Windows.Forms.Button buttonRejectChore;
         private System.Windows.Forms.Button buttonPrevPage;
         private System.Windows.Forms.Button buttonNextPage;
 
