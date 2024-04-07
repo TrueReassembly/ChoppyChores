@@ -147,6 +147,7 @@ namespace ChoppyChores.forms.parent.rewards
             this.buttonAcceptReward.TabIndex = 47;
             this.buttonAcceptReward.Text = "Accept Reward";
             this.buttonAcceptReward.UseVisualStyleBackColor = true;
+            this.buttonAcceptReward.Click += new System.EventHandler(this.buttonAcceptReward_Click);
             // 
             // buttonRefundReward
             // 
@@ -156,6 +157,7 @@ namespace ChoppyChores.forms.parent.rewards
             this.buttonRefundReward.TabIndex = 46;
             this.buttonRefundReward.Text = "Refund Reward";
             this.buttonRefundReward.UseVisualStyleBackColor = true;
+            this.buttonRefundReward.Click += new System.EventHandler(this.buttonRefundReward_Click);
             // 
             // buttonPrevPage
             // 
@@ -166,6 +168,7 @@ namespace ChoppyChores.forms.parent.rewards
             this.buttonPrevPage.TabIndex = 45;
             this.buttonPrevPage.Text = "<--";
             this.buttonPrevPage.UseVisualStyleBackColor = true;
+            this.buttonPrevPage.Click += new System.EventHandler(this.buttonPrevPage_Click);
             // 
             // buttonNextPage
             // 
@@ -201,7 +204,6 @@ namespace ChoppyChores.forms.parent.rewards
             this.Text = "ParentViewPendingRewards";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

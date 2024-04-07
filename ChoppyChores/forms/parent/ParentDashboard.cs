@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using ChoppyChores.data;
 
 namespace ChoppyChores.forms.parent
 {
@@ -10,6 +11,9 @@ namespace ChoppyChores.forms.parent
             InitializeComponent();
 
             FormClosed += new FormClosedEventHandler(ParentDashboard_FormClosed);
+
+            lblChoresWaiting.Text = "There are " + DataFileHandler.Instance.GetPendingChores().Count + " chores pending approval";
+            lblRewardsPending.Text = "There are " + DataFileHandler.Instance.GetAllPendingRewards().Count + " rewards pending approval";
         }
 
         private void buttonHome_Click(object sender, EventArgs e)

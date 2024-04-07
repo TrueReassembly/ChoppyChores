@@ -101,6 +101,7 @@ namespace ChoppyChores.forms.parent.accounts
                 child.ResetPassword(txt_Password.Text);
             }
             child.Save();
+            MessageBox.Show("Child account updated!");
         }
 
         private void buttonPrevPage_Click(object sender, EventArgs e)

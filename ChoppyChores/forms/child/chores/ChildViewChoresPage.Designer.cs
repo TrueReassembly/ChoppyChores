@@ -54,6 +54,7 @@ namespace ChoppyChores.forms.parent.chores
             this.btnHome.TabIndex = 0;
             this.btnHome.Text = "Home";
             this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // btnChores
             // 
@@ -72,6 +73,7 @@ namespace ChoppyChores.forms.parent.chores
             this.btnRewards.TabIndex = 2;
             this.btnRewards.Text = "Rewards";
             this.btnRewards.UseVisualStyleBackColor = true;
+            this.btnRewards.Click += new System.EventHandler(this.btnRewards_Click);
             // 
             // label7
             // 
@@ -209,7 +211,6 @@ namespace ChoppyChores.forms.parent.chores
             this.Text = "View Chores";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

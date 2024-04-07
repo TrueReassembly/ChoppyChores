@@ -93,7 +93,16 @@ namespace ChoppyChores.models
                 lines[lineToEdit] = _id + ";" + _name + ";" + _cost;
             }
 
-            File.WriteAllLines(DataFileHandler.Instance.GetPath(StorageFiles.Chores), lines.ToArray());
+            File.WriteAllLines(DataFileHandler.Instance.GetPath(StorageFiles.Rewards), lines.ToArray());
+        }
+
+        public void Delete()
+        {
+            List<string> allChores = new List<string>();
+            DataFileHandler.Instance.RunReader(StorageFiles.Chores, reader => allChores = reader.ReadToEnd().Split('\n').ToList());
+            allChores.RemoveAll(x => x.StartsWith(_id));
+            allChores.RemoveAll(x => x == "");
+            File.WriteAllLines(DataFileHandler.Instance.GetPath(StorageFiles.Chores), allChores.ToArray());
         }
     }
 }

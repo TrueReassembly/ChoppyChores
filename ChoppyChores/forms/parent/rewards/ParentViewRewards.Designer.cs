@@ -40,8 +40,8 @@ namespace ChoppyChores.forms.parent.rewards
             this.buttonHome = new System.Windows.Forms.Button();
             this.button = new System.Windows.Forms.Label();
             this.txtRewardName = new System.Windows.Forms.TextBox();
-            this.buttonNewChore = new System.Windows.Forms.Button();
-            this.buttonSaveChore = new System.Windows.Forms.Button();
+            this.buttonNewReward = new System.Windows.Forms.Button();
+            this.buttonSaveReward = new System.Windows.Forms.Button();
             this.buttonPrevPage = new System.Windows.Forms.Button();
             this.buttonNextPage = new System.Windows.Forms.Button();
             this.button_ViewPending = new System.Windows.Forms.Button();
@@ -142,23 +142,25 @@ namespace ChoppyChores.forms.parent.rewards
             this.txtRewardName.Size = new System.Drawing.Size(251, 20);
             this.txtRewardName.TabIndex = 25;
             // 
-            // buttonNewChore
+            // buttonNewReward
             // 
-            this.buttonNewChore.Location = new System.Drawing.Point(129, 366);
-            this.buttonNewChore.Name = "buttonNewChore";
-            this.buttonNewChore.Size = new System.Drawing.Size(273, 74);
-            this.buttonNewChore.TabIndex = 24;
-            this.buttonNewChore.Text = "New Chore";
-            this.buttonNewChore.UseVisualStyleBackColor = true;
+            this.buttonNewReward.Location = new System.Drawing.Point(129, 366);
+            this.buttonNewReward.Name = "buttonNewReward";
+            this.buttonNewReward.Size = new System.Drawing.Size(273, 74);
+            this.buttonNewReward.TabIndex = 24;
+            this.buttonNewReward.Text = "New Reward";
+            this.buttonNewReward.UseVisualStyleBackColor = true;
+            this.buttonNewReward.Click += new System.EventHandler(this.buttonNewReward_Click);
             // 
-            // buttonSaveChore
+            // buttonSaveReward
             // 
-            this.buttonSaveChore.Location = new System.Drawing.Point(402, 366);
-            this.buttonSaveChore.Name = "buttonSaveChore";
-            this.buttonSaveChore.Size = new System.Drawing.Size(273, 74);
-            this.buttonSaveChore.TabIndex = 23;
-            this.buttonSaveChore.Text = "Save Chore";
-            this.buttonSaveChore.UseVisualStyleBackColor = true;
+            this.buttonSaveReward.Location = new System.Drawing.Point(402, 366);
+            this.buttonSaveReward.Name = "buttonSaveReward";
+            this.buttonSaveReward.Size = new System.Drawing.Size(273, 74);
+            this.buttonSaveReward.TabIndex = 23;
+            this.buttonSaveReward.Text = "Save Reward";
+            this.buttonSaveReward.UseVisualStyleBackColor = true;
+            this.buttonSaveReward.Click += new System.EventHandler(this.buttonSaveReward_Click);
             // 
             // buttonPrevPage
             // 
@@ -209,8 +211,8 @@ namespace ChoppyChores.forms.parent.rewards
             this.Controls.Add(this.buttonHome);
             this.Controls.Add(this.button);
             this.Controls.Add(this.txtRewardName);
-            this.Controls.Add(this.buttonNewChore);
-            this.Controls.Add(this.buttonSaveChore);
+            this.Controls.Add(this.buttonNewReward);
+            this.Controls.Add(this.buttonSaveReward);
             this.Controls.Add(this.buttonPrevPage);
             this.Controls.Add(this.buttonNextPage);
             this.Name = "ParentViewRewards";
@@ -232,8 +234,8 @@ namespace ChoppyChores.forms.parent.rewards
         private System.Windows.Forms.Button buttonHome;
         private System.Windows.Forms.Label button;
         private System.Windows.Forms.TextBox txtRewardName;
-        private System.Windows.Forms.Button buttonNewChore;
-        private System.Windows.Forms.Button buttonSaveChore;
+        private System.Windows.Forms.Button buttonNewReward;
+        private System.Windows.Forms.Button buttonSaveReward;
         private System.Windows.Forms.Button buttonPrevPage;
         private System.Windows.Forms.Button buttonNextPage;
 

@@ -12,7 +12,7 @@ namespace ChoppyChores.models
         private string _name;
         private int _reward;
         private bool _public;
-        private string _claimedBy; //User's ID
+        private string _claimedBy; //User's ID, 0 if unclaimed
         private int _minAge;
         private ChoreState _state;
 
@@ -23,7 +23,7 @@ namespace ChoppyChores.models
             _reward = reward;
             _public = isPublic;
             _minAge = minAge;
-            _claimedBy = "-1";
+            _claimedBy = "0";
             _state = ChoreState.Unclaimed;
         }
 
@@ -80,14 +80,14 @@ namespace ChoppyChores.models
 
             if (lineToEdit == -1)
             {
-                var line = _id + ";" + _name + ";" + _reward + ";" +_public.ToString() + ";" + _claimedBy + ";" + _minAge + ";" + _state;
+                var line = _id + ";" + _name + ";" + _reward + ";" +_public.ToString() + ";" + _minAge + ";" + _claimedBy + ";" + _state;
                 // Add new line to the end of the file
                 lines.Add(line);
             }
             else
             {
                 // Ovewrite the iteration line with the new data
-                lines[lineToEdit] = _id + ";" + _name + ";" + _reward + ";" + _public.ToString() + ";" + _claimedBy + ";" + _minAge + ";" + _state;
+                lines[lineToEdit] = _id + ";" + _name + ";" + _reward + ";" + _public.ToString() + ";" + _minAge + ";" + _claimedBy + ";" + _state;
             }
 
             var newLines = new List<string>(lines.Count);
@@ -107,7 +107,9 @@ namespace ChoppyChores.models
             List<string> allChores = new List<string>();
             DataFileHandler.Instance.RunReader(StorageFiles.Chores, reader => allChores = reader.ReadToEnd().Split('\n').ToList());
             allChores.RemoveAll(x => x.StartsWith(_id));
+            allChores.RemoveAll(x => x == "");
             File.WriteAllLines(DataFileHandler.Instance.GetPath(StorageFiles.Chores), allChores.ToArray());
+            
         }
         
         public int GetReward()

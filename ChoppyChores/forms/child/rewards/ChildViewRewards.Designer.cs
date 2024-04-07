@@ -60,6 +60,7 @@ namespace ChoppyChores.forms.child.rewards
             this.btnNextPageChildChore.TabIndex = 26;
             this.btnNextPageChildChore.Text = "--->";
             this.btnNextPageChildChore.UseVisualStyleBackColor = true;
+            this.btnNextPageChildChore.Click += new System.EventHandler(this.btnNextPageChildChore_Click);
             // 
             // btnPrevPageChildChore
             // 
@@ -69,6 +70,7 @@ namespace ChoppyChores.forms.child.rewards
             this.btnPrevPageChildChore.TabIndex = 25;
             this.btnPrevPageChildChore.Text = "<---";
             this.btnPrevPageChildChore.UseVisualStyleBackColor = true;
+            this.btnPrevPageChildChore.Click += new System.EventHandler(this.btnPrevPageChildChore_Click);
             // 
             // btnClaim
             // 
@@ -78,6 +80,7 @@ namespace ChoppyChores.forms.child.rewards
             this.btnClaim.TabIndex = 22;
             this.btnClaim.Text = "Claim";
             this.btnClaim.UseVisualStyleBackColor = true;
+            this.btnClaim.Click += new System.EventHandler(this.btnClaim_Click);
             // 
             // lblCost
             // 
@@ -127,6 +130,7 @@ namespace ChoppyChores.forms.child.rewards
             this.btnChores.TabIndex = 16;
             this.btnChores.Text = "Chores";
             this.btnChores.UseVisualStyleBackColor = true;
+            this.btnChores.Click += new System.EventHandler(this.btnChores_Click);
             // 
             // btnHome
             // 
@@ -136,6 +140,7 @@ namespace ChoppyChores.forms.child.rewards
             this.btnHome.TabIndex = 15;
             this.btnHome.Text = "Home";
             this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // ChildViewRewards
             // 
@@ -157,7 +162,6 @@ namespace ChoppyChores.forms.child.rewards
             this.Text = "ChildViewRewards";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

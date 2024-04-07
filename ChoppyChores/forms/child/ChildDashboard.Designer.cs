@@ -36,6 +36,7 @@ namespace ChoppyChores.forms.child
             this.label7 = new System.Windows.Forms.Label();
             this.label_name = new System.Windows.Forms.Label();
             this.lbl_ClaimedChores = new System.Windows.Forms.Label();
+            this.lbl_points = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnRewards
@@ -46,6 +47,7 @@ namespace ChoppyChores.forms.child
             this.btnRewards.TabIndex = 5;
             this.btnRewards.Text = "Rewards";
             this.btnRewards.UseVisualStyleBackColor = true;
+            this.btnRewards.Click += new System.EventHandler(this.btnRewards_Click);
             // 
             // btnChores
             // 
@@ -55,6 +57,7 @@ namespace ChoppyChores.forms.child
             this.btnChores.TabIndex = 4;
             this.btnChores.Text = "Chores";
             this.btnChores.UseVisualStyleBackColor = true;
+            this.btnChores.Click += new System.EventHandler(this.btnChores_Click);
             // 
             // btnHome
             // 
@@ -97,12 +100,24 @@ namespace ChoppyChores.forms.child
             this.lbl_ClaimedChores.Text = "You have got x chores to complete!";
             this.lbl_ClaimedChores.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lbl_points
+            // 
+            this.lbl_points.AutoSize = true;
+            this.lbl_points.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_points.Location = new System.Drawing.Point(163, 143);
+            this.lbl_points.Name = "lbl_points";
+            this.lbl_points.Size = new System.Drawing.Size(518, 37);
+            this.lbl_points.TabIndex = 9;
+            this.lbl_points.Text = "You have got x chores to complete!";
+            this.lbl_points.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ChildDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbl_points);
             this.Controls.Add(this.lbl_ClaimedChores);
             this.Controls.Add(this.label_name);
             this.Controls.Add(this.label7);
@@ -113,8 +128,9 @@ namespace ChoppyChores.forms.child
             this.Text = "ChildDashboard";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+
+        private System.Windows.Forms.Label lbl_points;
 
         #endregion
 

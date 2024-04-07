@@ -40,7 +40,7 @@ namespace ChoppyChores
             Application.SetCompatibleTextRenderingDefault(false);
 
             // If Data files do not exist, create them
-            if (!File.Exists("./storage/Accounts.txt"))
+            if (!File.Exists("./storage/Accounts.txt") || !File.Exists("./storage/Chores.txt") || !File.Exists("./storage/Rewards.txt") || !File.Exists("./storage/PendingRewards.txt"))
             {
                 Directory.CreateDirectory("./storage");
                 File.Create("./storage/Accounts.txt").Close();

@@ -69,7 +69,7 @@ namespace ChoppyChores.forms.parent.chores
 
             Chore chore = pendingChores[pointer];
             lbl_ChoreName.Text = chore.GetName();
-            lbl_AssignedTo.Text = chore.GetClaimedBy();
+            lbl_AssignedTo.Text = DataFileHandler.Instance.GetChildById(chore.GetClaimedBy()).GetUsername();
             lbl_Worth.Text = chore.GetReward().ToString();
         }
 
@@ -102,6 +102,7 @@ namespace ChoppyChores.forms.parent.chores
             child.Save();
             chore.Delete();
             pointer = 0;
+            MessageBox.Show("Chore accepted, points awarded to child");
             LoadEverything();
         }
 

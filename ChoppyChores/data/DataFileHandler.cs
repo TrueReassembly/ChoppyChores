@@ -24,7 +24,11 @@ namespace ChoppyChores.data
             Age
         }
 
-
+        /**
+         * Gets a usable Singleton instance of the DataFileHandler
+         *
+         * @return The instance of the DataFileHandler
+         */
         public static DataFileHandler Instance
         {
             get { return _instance ?? (_instance = new DataFileHandler()); }
@@ -50,7 +54,6 @@ namespace ChoppyChores.data
                     if (split[0].Equals(id))
                     {
                         child = line.ToChild();
-                        // child = new Child(split[1], split[2],  int.Parse(split[3]), int.Parse(split[4]),   split[5].Split('+').ToList(), split[6].Split('+').ToList());
                     }
                 }
             });
@@ -64,13 +67,13 @@ namespace ChoppyChores.data
             var random = new Random();
             RunReader(file, theFile =>
             {
-                lines = theFile.ReadToEnd().Split('\n');
+                lines = theFile.ReadToEnd().Split('\n'); // write each line to an array
             });
             bool idExists = true;
             while (idExists)
             {
                 id = random.Next(100, 999).ToString();
-                idExists = lines.Any(line => line.Split(';')[0].Equals(id));
+                idExists = lines.Any(line => line.Split(';')[0].Equals(id)); // if the line does not exist in any of the lines, then the id is unique therefore we set idExists to false, breaking out of the loop
             }
             return id;
         }
@@ -98,6 +101,11 @@ namespace ChoppyChores.data
                     var rewardReader = File.OpenText(RewardsFile);
                     callback(rewardReader);
                     rewardReader.Close();
+                    break;
+                case StorageFiles.PendingRewards:
+                    var pendingRewardReader = File.OpenText(PendingRewardsFile);
+                    callback(pendingRewardReader);
+                    pendingRewardReader.Close();
                     break;
                 default:
                     callback(null);
@@ -128,6 +136,11 @@ namespace ChoppyChores.data
                     var rewardWriter = File.AppendText(RewardsFile);
                     callback(rewardWriter);
                     rewardWriter.Close();
+                    break;
+                case StorageFiles.PendingRewards:
+                    var pendingRewardWriter = File.AppendText(PendingRewardsFile);
+                    callback(pendingRewardWriter);
+                    pendingRewardWriter.Close();
                     break;
                 default:
                     callback(null);
@@ -163,6 +176,7 @@ namespace ChoppyChores.data
                             {
                                 if (unsortedChores[i].GetMinAge() > unsortedChores[i + 1].GetMinAge())
                                 {
+                                    // if they are unsorted, swap them (bubble sort)
                                     var temp = unsortedChores[i];
                                     unsortedChores[i] = unsortedChores[i + 1];
                                     unsortedChores[i + 1] = temp;
@@ -309,7 +323,11 @@ namespace ChoppyChores.data
                 while (!reader.EndOfStream)
                 {
                     try {
-                        temp.Add(reader.ReadLine().ToChore());
+                        var line = reader.ReadLine();
+                        //If any line is malformed for whatever reason, skip it
+                        if (line == null) continue;
+                        if (line.Equals("")) continue;
+                        temp.Add(line.ToChore());
                     } 
                     catch (Exception e)
                     {
@@ -320,6 +338,11 @@ namespace ChoppyChores.data
             return temp;
         }
 
+        /**
+         * Gets all the children sorted by their name in ascending order
+         *
+         * @return A list of all children sorted by their name in ascending order
+         */
         public List<Child> GetChildrenSortedByName()
         {
             List<Child> children = GetAllChildren();
@@ -330,6 +353,7 @@ namespace ChoppyChores.data
                 {
                     if (children[i].GetUsername().IsBefore(children[i + 1].GetUsername()))
                     {
+                        // if they are unsorted, swap them (bubble sort)
                         var temp = children[i];
                         children[i] = children[i + 1];
                         children[i + 1] = temp;
@@ -341,6 +365,12 @@ namespace ChoppyChores.data
             return children;
         }
 
+        /**
+         * Gets the path of the specified storage file
+         *
+         * @param chores The storage file to get the path of
+         * @return The path of the specified storage file
+         */
         internal string GetPath(StorageFiles chores)
         {
             switch (chores)
@@ -351,22 +381,37 @@ namespace ChoppyChores.data
                     return ChoresFile;
                 case StorageFiles.Rewards:
                     return RewardsFile;
+                case StorageFiles.PendingRewards:
+                    return PendingRewardsFile;
                 default:
                     return "";
             }
         }
 
+        /**
+         * Sets the currently logged in child
+         *
+         * @param child The child to set as the currently logged in child
+         */
         public void SetLoggedInChild(Child child)
         {
             _currentChild = child;
         }
 
+        /**
+         * Gets the currently logged in child
+         *
+         * @return The currently logged in child
+         */
         public Child GetLoggedInChild()
         {
-            return GetAllChildren()[0];
-            // return; _currentChild
+            return _currentChild;
         }
 
+        /**
+         * Gets a list of all accounts
+         * @return A list of all accounts, or an empty list if no accounts exist
+         */
         public List<Account> GetAllAccounts()
         {
             List<Account> accounts = new List<Account>();
@@ -374,6 +419,7 @@ namespace ChoppyChores.data
             {
                 while (!file.EndOfStream)
                 {
+                    // If the ID (split[1]) is "Child", then it is a child account, and we add it as such. Otherwise, it is a parent account. We already skip the line if it is empty, so we don't need to check for that.
                     var line = file.ReadLine();
                     if (line == null) continue;
                     var split = line.Split(';');
@@ -390,6 +436,10 @@ namespace ChoppyChores.data
             return accounts;
         }
 
+        /**
+         * Gets a list of all parents
+         * @return A list of all parents, or an empty list if no parents exist
+         */
         public List<Parent> GetParents()
         {
             List<Parent> accounts = new List<Parent>();
@@ -400,6 +450,7 @@ namespace ChoppyChores.data
                     var line = file.ReadLine();
                     if (line == null) continue;
                     var split = line.Split(';');
+                    // If the ID (split[1]) is "Parent", then it is a parent account, and we add it as such.
                     if (split[1].Equals("Parent"))
                     {
                         accounts.Add(line.ToParent());
@@ -410,12 +461,17 @@ namespace ChoppyChores.data
             return accounts;
         }
 
+        /**
+         * Gets a list of the pending chores
+         * @return A list of all pending chores
+         */
         public List<Chore> GetPendingChores()
         {
             var chores = GetAllChores();
             var toReturn = new List<Chore>();
             foreach (var chore in chores)
             {
+                // If the chore is pending, add it to the list
                 if (chore.GetStatus().Equals(ChoreState.Pending))
                 {
                     toReturn.Add(chore);
@@ -424,7 +480,33 @@ namespace ChoppyChores.data
 
             return toReturn;
         }
+
+        /**
+         * Gets a list of the pending rewards
+         * @return A list of all pending rewards
+         */
+        public List<PendingReward> GetAllPendingRewards()
+        {
+            List<PendingReward> rewards = new List<PendingReward>();
+            RunReader(StorageFiles.PendingRewards, reader =>
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    if (line == null) continue;
+                    var split = line.Split(';');
+                    // Parse the line as a PendingReward object and add it to the list
+                    rewards.Add(new PendingReward(split[0], split[1], int.Parse(split[2]), split[3]));
+                }
+            });
+            return rewards;
+        }
         
+        /**
+         * Gets a list of all the rewards
+         *
+         * @return A list of all the rewards
+         */
         public List<Reward> GetAllRewards()
         {
             List<Reward> rewards = new List<Reward>();

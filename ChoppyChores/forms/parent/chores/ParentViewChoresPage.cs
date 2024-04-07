@@ -3,20 +3,22 @@ using ChoppyChores.models;
 using ChoppyChores.data;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using ChoppyChores.forms.parent.accounts;
+using ChoppyChores.forms.parent.rewards;
 
 namespace ChoppyChores.forms.parent.chores
 {
     public partial class ParentViewChoresPage : Form
     {
 
-        List<Chore> chores;
-        List<Child> children;
+        List<Chore> chores = new List<Chore>();
+        List<Child> children = new List<Child>();
         int pointer;
 
         public ParentViewChoresPage()
         {
             pointer = 0;
-            children = DataFileHandler.Instance.GetChildrenSortedByName();
+            
             
             InitializeComponent();
 
@@ -25,6 +27,8 @@ namespace ChoppyChores.forms.parent.chores
 
         public void LoadEverything()
         {
+            children.Clear();
+            children = DataFileHandler.Instance.GetChildrenSortedByName();
             chores = DataFileHandler.Instance.GetAllChores();
             if (chores.Count == 0)
             {
@@ -33,25 +37,36 @@ namespace ChoppyChores.forms.parent.chores
                 numPoints.Text = "";
                 lblPage.Text = "0/0";
                 MessageBox.Show("Please enter parameters into the empty option boxes then click 'New Chore' to create a new chore");
+                comboAssignedTo.Items.Clear();
+                comboAssignedTo.Items.Add("Unassigned");
+                foreach (var theChild in children)
+                {
+                    comboAssignedTo.Items.Add(theChild.GetUsername());
+                    Console.WriteLine("Child: " + theChild.GetUsername());
+                }
                 return;
             }
 
             Chore chore = chores[pointer];
             txtChoreName.Text = chore.GetName();
+            
+            numAge.Text = chore.GetMinAge().ToString();
+            numPoints.Text = chore.GetReward().ToString();
+            lblPage.Text = (pointer + 1) + " / " + chores.Count;
+            comboAssignedTo.Items.Clear();
+            comboAssignedTo.Items.Add("Unassigned");
+            foreach (var theChild in children)
+            {
+                comboAssignedTo.Items.Add(theChild.GetUsername());
+                Console.WriteLine("Child: " + theChild.GetUsername());
+            }
             var child = DataFileHandler.Instance.GetChildFromName(chore.GetClaimedBy().ToString());
             if (child != null)
             {
                 comboAssignedTo.SelectedIndex = children.IndexOf(child);
             }
             else
-                comboAssignedTo.SelectedIndex = 0;
-            numAge.Text = chore.GetMinAge().ToString();
-            numPoints.Text = chore.GetReward().ToString();
-            lblPage.Text = (pointer + 1) + " / " + chores.Count;
-            foreach (var theChild in children)
-            {
-                comboAssignedTo.Items.Add(theChild.GetUsername());
-            }
+                comboAssignedTo.SelectedIndex = -1;
         }
 
         private void ParentViewChoresPage_Load(object sender, EventArgs e)
@@ -87,9 +102,9 @@ namespace ChoppyChores.forms.parent.chores
             chore.SetName(txtChoreName.Text);
             chore.SetReward(int.Parse(numPoints.Text));
             chore.SetMinAge(int.Parse(numAge.Text));
-            if (comboAssignedTo.SelectedIndex == 0)
+            if (comboAssignedTo.SelectedIndex == 0 || comboAssignedTo.SelectedIndex == -1)
             {
-                chore.SetClaimedBy("-1");
+                chore.SetClaimedBy("0");
             }
             else
             {
@@ -107,17 +122,7 @@ namespace ChoppyChores.forms.parent.chores
             }
             else pointer++;
 
-            txtChoreName.Text = chores[pointer].GetName();
-            var child = DataFileHandler.Instance.GetChildById(chores[pointer].GetClaimedBy());
-            if (child != null)
-            {
-                comboAssignedTo.SelectedIndex = children.IndexOf(child);
-            }
-            else
-                comboAssignedTo.SelectedIndex = 0;
-            numAge.Text = chores[pointer].GetMinAge().ToString();
-            numPoints.Text = chores[pointer].GetReward().ToString();
-            lblPage.Text = (pointer + 1) + " / " + chores.Count;
+            LoadEverything();
         }
 
         private void buttonPrevPage_Click(object sender, EventArgs e)
@@ -128,17 +133,19 @@ namespace ChoppyChores.forms.parent.chores
             }
             else pointer--;
 
-            txtChoreName.Text = chores[pointer].GetName();
-            var child = DataFileHandler.Instance.GetChildFromName(chores[pointer].GetClaimedBy());
-            if (child != null)
-            {
-                comboAssignedTo.SelectedIndex = children.IndexOf(child);
-            }
-            else
-                comboAssignedTo.SelectedIndex = 0;
-            numAge.Text = chores[pointer].GetMinAge().ToString();
-            numPoints.Text = chores[pointer].GetReward().ToString();
-            lblPage.Text = (pointer + 1) + " / " + chores.Count;
+            LoadEverything();
+            
+            // txtChoreName.Text = chores[pointer].GetName();
+            // var child = DataFileHandler.Instance.GetChildFromName(chores[pointer].GetClaimedBy());
+            // if (child != null)
+            // {
+            //     comboAssignedTo.SelectedIndex = children.IndexOf(child);
+            // }
+            // else
+            //     comboAssignedTo.SelectedIndex = 0;
+            // numAge.Text = chores[pointer].GetMinAge().ToString();
+            // numPoints.Text = chores[pointer].GetReward().ToString();
+            // lblPage.Text = (pointer + 1) + " / " + chores.Count;
         }
 
         private void buttonNewChore_Click(object sender, EventArgs e)
@@ -161,15 +168,17 @@ namespace ChoppyChores.forms.parent.chores
             }
             String childID;
             Console.WriteLine(comboAssignedTo.SelectedIndex);
-            if (comboAssignedTo.SelectedIndex == -1)
+            if (comboAssignedTo.SelectedIndex == 0 || comboAssignedTo.SelectedIndex == -1)
             {
-                childID = "-1";
+                childID = "";
                 new Chore(DataFileHandler.Instance.FindNewId(StorageFiles.Chores), txtChoreName.Text, int.Parse(numPoints.Text), true, int.Parse(numAge.Text), childID, ChoreState.Unclaimed).Save();
                 LoadEverything();
             }
             else
             {
-                childID = children[comboAssignedTo.SelectedIndex + 1].GetId();
+                Console.WriteLine("Size of children: " + children.Count);
+                Console.WriteLine("Index: " + comboAssignedTo.SelectedIndex);
+                childID = children[comboAssignedTo.SelectedIndex - 1].GetId();
                 new Chore(DataFileHandler.Instance.FindNewId(StorageFiles.Chores), txtChoreName.Text, int.Parse(numPoints.Text), false, int.Parse(numAge.Text), childID, ChoreState.Claimed).Save();
                 LoadEverything();
             }
@@ -190,13 +199,36 @@ namespace ChoppyChores.forms.parent.chores
         private void buttonAccounts_Click(object sender, EventArgs e)
         {
             Hide();
-            new accounts.ParentViewAccountPage().ShowDialog();
+            new ParentViewAccountPage().ShowDialog();
         }
 
         private void buttonRewards_Click(object sender, EventArgs e)
         {
             Hide();
-            new rewards.ParentViewRewards().ShowDialog();
+            new ParentViewRewards().ShowDialog();
+        }
+
+        private void comboAssignedTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("New Index: " + comboAssignedTo.SelectedIndex);
+        }
+
+        private void buttonDeleteChore_Click(object sender, EventArgs e)
+        {
+            if (chores.Count == 0)
+            {
+                MessageBox.Show("No chores to delete");
+                return;
+            }
+            var chore = chores[pointer];
+            chore.Delete();
+            LoadEverything();
+        }
+
+        private void buttonPendingChores_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new ParentViewPendingChores().ShowDialog();
         }
     }
 }

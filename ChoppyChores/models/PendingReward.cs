@@ -26,6 +26,7 @@ namespace ChoppyChores.models
             _id = id;
             _name = name;
             _cost = cost;
+            _assignedTo = assignedTo;
         }
 
         public string GetId()
@@ -93,6 +94,20 @@ namespace ChoppyChores.models
             }
             
             File.WriteAllLines(DataFileHandler.Instance.GetPath(StorageFiles.PendingRewards), lines.ToArray());
+        }
+
+        public void Delete()
+        {
+            List<string> allRewards = new List<string>();
+            DataFileHandler.Instance.RunReader(StorageFiles.PendingRewards, reader => allRewards = reader.ReadToEnd().Split('\n').ToList());
+            allRewards.RemoveAll(x => x.StartsWith(_id));
+            allRewards.RemoveAll(x => x == "");
+            File.WriteAllLines(DataFileHandler.Instance.GetPath(StorageFiles.PendingRewards), allRewards.ToArray());
+        }
+
+        public string GetAssignedTo()
+        {
+            return _assignedTo;
         }
     }
 }

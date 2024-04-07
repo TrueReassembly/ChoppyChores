@@ -33,7 +33,7 @@ namespace ChoppyChores.forms.parent.rewards
         private void buttonHome_Click(object sender, EventArgs e)
         {
             Hide();
-            new ParentViewChoresPage().ShowDialog();
+            new ParentDashboard().ShowDialog();
         }
 
         private void buttonChores_Click(object sender, EventArgs e)
@@ -88,6 +88,44 @@ namespace ChoppyChores.forms.parent.rewards
             else pointer = 0;
             
             LoadEverything();
+        }
+
+        private void buttonNewReward_Click(object sender, EventArgs e)
+        {
+            if (txtRewardName.Text == "")
+            {
+                MessageBox.Show("Please enter a reward name");
+                return;
+            }
+            if (numPoints.Text == "")
+            {
+                MessageBox.Show("Please enter a cost");
+                return;
+            }
+            new Reward(txtRewardName.Text, int.Parse(numPoints.Text)).Save();
+            MessageBox.Show("Reward created");
+            _rewards = DataFileHandler.Instance.GetAllRewards();
+            pointer = _rewards.Count - 1;
+            LoadEverything();
+        }
+
+        private void buttonSaveReward_Click(object sender, EventArgs e)
+        {
+            if (txtRewardName.Text == "")
+            {
+                MessageBox.Show("Please enter a reward name");
+                return;
+            }
+            if (numPoints.Text == "")
+            {
+                MessageBox.Show("Please enter a cost");
+                return;
+            }
+            Reward reward = _rewards[pointer];
+            reward.SetName(txtRewardName.Text);
+            reward.SetCost(int.Parse(numPoints.Text));
+            reward.Save();
+            MessageBox.Show("Reward saved");
         }
     }
 }

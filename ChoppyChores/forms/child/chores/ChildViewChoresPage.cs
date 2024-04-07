@@ -3,12 +3,15 @@ using ChoppyChores.models;
 using ChoppyChores.data;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using ChoppyChores.forms.child;
+using ChoppyChores.forms.child.rewards;
 
 namespace ChoppyChores.forms.parent.chores
 {
     public partial class ChildViewChoresPage : Form
     {
-
+        
+        // List of chores and the pointer to the current chore, global scope so that it can be accessed by all methods
         List<Chore> chores;
         int pointer;
 
@@ -23,6 +26,9 @@ namespace ChoppyChores.forms.parent.chores
             LoadEverything();
         }
 
+        /**
+         * Load all the information about the chore, using the chore list and the pointer which represents the index of the chore
+         */
         public void LoadEverything()
         {
             if (chores.Count == 0)
@@ -40,27 +46,32 @@ namespace ChoppyChores.forms.parent.chores
             Chore chore = chores[pointer];
             lblChoreName.Text = chore.GetName();
             lblWorth.Text = "Worth " + chore.GetReward() + " Points";
-            lblAge.Text = "For children aged at least  " + chore.GetMinAge() + " years old";
+            lblAge.Text = "For children aged at least " + chore.GetMinAge() + " years old";
             lblChildChorePage.Text = (pointer + 1) + " / " + chores.Count;
 
+            //Disable both of the buttons by default, and enable them based on the status of the chore below
             btnClaim.Enabled = false;
             btnSubmit.Enabled = false;
 
-            
+            // If the chore is claimed by someone else, show the name of the person who claimed it
             if (chore.GetClaimedBy() != DataFileHandler.Instance.GetLoggedInChild().GetId() && chore.GetStatus() == ChoreState.Claimed)
             {
-                lblClaimedBy.Text = "Claimed by: " + DataFileHandler.Instance.GetChildById(chore.GetClaimedBy()).GetUsername();
+                lblClaimedBy.Text = "Claimed by: " + DataFileHandler.Instance.GetChildById(chore.GetClaimedBy()).GetUsername().ToString();
             }
+            // If the chore is claimed by the logged in child, show that it is claimed by the child and enable the submit button for them to submit their chore for review
             else if (chore.GetClaimedBy() == DataFileHandler.Instance.GetLoggedInChild().GetId())
             {
                 lblClaimedBy.Text = "Claimed by: You";
                 btnSubmit.Enabled = true;
-            } else
+            } 
+            // Otherwise, show that it is unclaimed and enable the claim button
+            else
             {
                 lblClaimedBy.Text = "Claimed by: Noone";
                 btnClaim.Enabled = true;
             }
 
+            // Set the status of the chore
             switch (chore.GetStatus())
             {
                 case ChoreState.Unclaimed:
@@ -81,9 +92,9 @@ namespace ChoppyChores.forms.parent.chores
             LoadEverything();
         }
 
+        // When the next page button is clicked, increment the pointer and load the information of the next chore
         private void btnNextPageChildChore_Click_1(object sender, EventArgs e)
         {
-            Console.WriteLine("CALL");
             if (pointer == chores.Count - 1)
             {
                 pointer = 0;
@@ -94,9 +105,9 @@ namespace ChoppyChores.forms.parent.chores
             
         }
 
+        // When the previous page button is clicked, decrement the pointer and load the information of the previous chore
         private void btnPrevPageChildChore_Click_1(object sender, EventArgs e)
         {
-            Console.WriteLine("CALL");
             if (pointer == 0)
             {
                 pointer = chores.Count - 1;
@@ -106,6 +117,7 @@ namespace ChoppyChores.forms.parent.chores
             LoadEverything();
         }
 
+        // When the claim button is clicked, give the chore to the logged in child and set the status to claimed and reload the information
         private void btnClaim_Click(object sender, EventArgs e)
         {
             var chore = chores[pointer];
@@ -116,6 +128,7 @@ namespace ChoppyChores.forms.parent.chores
             LoadEverything();
         }
 
+        // When the submit button is clicked, set the status of the chore to pending review and reload the information
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             var chore = chores[pointer];
@@ -123,6 +136,20 @@ namespace ChoppyChores.forms.parent.chores
             chore.Save();
             MessageBox.Show("Chore submitted for review!");
             LoadEverything();
+        }
+
+        // When the home button is clicked, go back to the child dashboard
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new ChildDashboard().ShowDialog();
+        }
+
+        // When the rewards button is clicked, go to the rewards page
+        private void btnRewards_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new ChildViewRewards().ShowDialog();
         }
     }
 }

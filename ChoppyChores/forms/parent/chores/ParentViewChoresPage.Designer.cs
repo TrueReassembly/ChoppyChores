@@ -50,6 +50,8 @@ namespace ChoppyChores.forms.parent.chores
             this.comboAssignedTo = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lblPage = new System.Windows.Forms.Label();
+            this.buttonDeleteChore = new System.Windows.Forms.Button();
+            this.buttonPendingChores = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numPoints)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAge)).BeginInit();
             this.SuspendLayout();
@@ -221,12 +223,12 @@ namespace ChoppyChores.forms.parent.chores
             // 
             this.comboAssignedTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboAssignedTo.FormattingEnabled = true;
-            this.comboAssignedTo.Items.AddRange(new object[] {
-            ""});
+            this.comboAssignedTo.Items.AddRange(new object[] { "" });
             this.comboAssignedTo.Location = new System.Drawing.Point(33, 129);
             this.comboAssignedTo.Name = "comboAssignedTo";
             this.comboAssignedTo.Size = new System.Drawing.Size(121, 21);
             this.comboAssignedTo.TabIndex = 18;
+            this.comboAssignedTo.SelectedIndexChanged += new System.EventHandler(this.comboAssignedTo_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -249,12 +251,34 @@ namespace ChoppyChores.forms.parent.chores
             this.lblPage.TabIndex = 20;
             this.lblPage.Text = "label7";
             // 
+            // buttonDeleteChore
+            // 
+            this.buttonDeleteChore.Location = new System.Drawing.Point(400, 284);
+            this.buttonDeleteChore.Name = "buttonDeleteChore";
+            this.buttonDeleteChore.Size = new System.Drawing.Size(273, 74);
+            this.buttonDeleteChore.TabIndex = 21;
+            this.buttonDeleteChore.Text = "Delete Chore";
+            this.buttonDeleteChore.UseVisualStyleBackColor = true;
+            this.buttonDeleteChore.Click += new System.EventHandler(this.buttonDeleteChore_Click);
+            // 
+            // buttonPendingChores
+            // 
+            this.buttonPendingChores.Location = new System.Drawing.Point(504, 114);
+            this.buttonPendingChores.Name = "buttonPendingChores";
+            this.buttonPendingChores.Size = new System.Drawing.Size(273, 74);
+            this.buttonPendingChores.TabIndex = 22;
+            this.buttonPendingChores.Text = "View Pending Chores";
+            this.buttonPendingChores.UseVisualStyleBackColor = true;
+            this.buttonPendingChores.Click += new System.EventHandler(this.buttonPendingChores_Click);
+            // 
             // ParentViewChoresPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonPendingChores);
+            this.Controls.Add(this.buttonDeleteChore);
             this.Controls.Add(this.lblPage);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboAssignedTo);
@@ -282,8 +306,11 @@ namespace ChoppyChores.forms.parent.chores
             ((System.ComponentModel.ISupportInitialize)(this.numAge)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+
+        private System.Windows.Forms.Button buttonPendingChores;
+
+        private System.Windows.Forms.Button buttonDeleteChore;
 
         #endregion
 

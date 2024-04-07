@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 using ChoppyChores.data;
+using ChoppyChores.forms.child;
 using ChoppyChores.forms.parent;
 using ChoppyChores.forms.parent.chores;
 using ChoppyChores.models;
@@ -31,7 +32,7 @@ namespace ChoppyChores
                     MessageBox.Show("Login Successful for " + child.GetUsername(), "a", MessageBoxButtons.OK);
                     DataFileHandler.Instance.SetLoggedInChild(child);
                     Hide();
-                    var childDashboard = new ChildViewChoresPage();
+                    var childDashboard = new ChildDashboard();
                     childDashboard.ShowDialog();
                     return;
                 }

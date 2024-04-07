@@ -24,6 +24,7 @@ namespace ChoppyChores.utils
             var split = str.Split(';');
             try
             {
+                if (str == null) throw new Exception("String is null");
                 var state = (ChoreState) Enum.Parse(typeof(ChoreState), split[6]);
 
                 // Constructor: public Chore(string id, string name, int reward, bool isPublic, int minAge, string claimedBy, ChoreState state)
@@ -33,9 +34,9 @@ namespace ChoppyChores.utils
             }
             catch (Exception e)
             {
-                Console.Error.WriteLine(e.StackTrace);
+                Console.Error.WriteLine(e.ToString());
                 
-                throw new Exception("String '" + str + "' cannot be converted to a Chore");
+                throw new Exception("Failed to convert string '" + str + "' to a Chore. Error: " + e.Message, e);
             }
             
         }
