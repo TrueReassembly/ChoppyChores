@@ -21,21 +21,6 @@ namespace ChoppyChores
         static void Main()
         {
 
-            // Create list of template chores and rewards
-            List<string> chores = new List<string>
-            {
-                "Take out the trash",
-                "Wash the dishes",
-                "Clean your room"
-            };
-
-            List<string> rewards = new List<string>
-            {
-                "Ice cream",
-                "Movie night",
-                "Trip to the park"
-            };
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -49,6 +34,7 @@ namespace ChoppyChores
                 File.Create("./storage/PendingRewards.txt").Close();
             }
 
+            // If there are no accounts, open the form to create the first account
             List<Account> accounts = DataFileHandler.Instance.GetAllAccounts();
             if (accounts.Count == 0)
             {
@@ -56,6 +42,7 @@ namespace ChoppyChores
                 return;
             }
 
+            // If there is a parent account, open the login page, otherwise open the first account page
             foreach(var account in accounts)
             {
                 if (account.GetAccountType() == AccountType.Parent)

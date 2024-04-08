@@ -87,6 +87,7 @@ namespace ChoppyChores.forms.parent.chores
             }
         }
 
+        // When the page loads, load all the information
         private void ChildViewChoresPage_Load(object sender, EventArgs e)
         {
             LoadEverything();

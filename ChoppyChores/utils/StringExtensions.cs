@@ -6,6 +6,12 @@ namespace ChoppyChores.utils
 {
     public static class StringExtensions
     {
+        /**
+         * Converts a string to a Child object
+         * @param str The string to convert
+         * @return The Child object
+         * @throws Exception If the string cannot be converted to a Child
+         */
         public static Child ToChild(this string str)
         {
             var split = str.Split(';');
@@ -19,6 +25,12 @@ namespace ChoppyChores.utils
             }
         }
 
+        /**
+         * Converts a string to a Chore object
+         * @param str The string to convert
+         * @return The Chore object
+         * @throws Exception If the string cannot be converted to a Chore
+         */
         public static Chore ToChore(this string str)
         {
             var split = str.Split(';');
@@ -41,6 +53,13 @@ namespace ChoppyChores.utils
             
         }
         
+        /**
+         * Checks if the first string comes before the second string alphabetically
+         * @param first The first string
+         * @param second The second string
+         * @param iteration The current iteration of the recursive function, do not set this manually.
+         * @return Whether the first string comes before the second string alphabetically
+         */
         public static bool IsBefore(this string first, string second, int iteration = 0)
         {
             first = first.ToLower();
@@ -58,6 +77,12 @@ namespace ChoppyChores.utils
             return Array.IndexOf(chars, first[iteration]) > Array.IndexOf(chars, second[iteration]);
         }
 
+        /**
+         * Converts a string to a Parent object
+         * @param str The string to convert
+         * @return The Parent object
+         * @throws Exception If the string cannot be converted to a Parent
+         */
         public static Parent ToParent(this string str)
         {
             var split = str.Split(';');

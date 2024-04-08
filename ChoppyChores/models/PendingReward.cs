@@ -13,6 +13,12 @@ namespace ChoppyChores.models
         private int _cost;
         private string _assignedTo;
 
+        /**
+         * Constructor for the PendingReward class
+         * @param name The name of the reward
+         * @param cost The cost of the reward
+         * @param assignedTo The user the reward is assigned to
+         */
         public PendingReward(string name, int cost, string assignedTo)
         {
             _id = DataFileHandler.Instance.FindNewId(StorageFiles.Rewards);
@@ -21,6 +27,13 @@ namespace ChoppyChores.models
             _assignedTo = assignedTo;
         }
 
+        /**
+         * Constructor for the PendingReward class
+         * @param id The id of the reward
+         * @param name The name of the reward
+         * @param cost The cost of the reward
+         * @param assignedTo The user the reward is assigned to
+         */
         public PendingReward(string id, string name, int cost, string assignedTo)
         {
             _id = id;
@@ -29,6 +42,7 @@ namespace ChoppyChores.models
             _assignedTo = assignedTo;
         }
 
+        // Getters and Setters for the PendingReward class
         public string GetId()
         {
             return _id;
@@ -54,14 +68,16 @@ namespace ChoppyChores.models
             _cost = cost;
         }
 
+        // Save the reward to the file
         public void Save()
         {
             var lineToEdit = -1;
             
+            // Find the line to edit
             DataFileHandler.Instance.RunReader(StorageFiles.PendingRewards, reader =>
             {
                 var iteration = 0;
-                while (reader.Peek() >= 0)
+                while (reader.Peek() >= 0) // While there is a line to read
                 {
                     var line = reader.ReadLine();
                     if (line.StartsWith(_id))
@@ -74,6 +90,7 @@ namespace ChoppyChores.models
             });
             
             var lines = new List<string>();
+            // Get all the lines from the file separated by new line and add them to the list "lines"
             DataFileHandler.Instance.RunReader(StorageFiles.PendingRewards, reader =>
             {
                 while (!reader.EndOfStream)
@@ -84,6 +101,7 @@ namespace ChoppyChores.models
                 }
             });
             
+            // If the line to edit is -1, add a new line to the end of the file with the new data, otherwise overwrite the iteration line with the new data
             if (lineToEdit == -1)
             {
                 lines.Add(_id + ";" + _name + ";" + _cost + ";" + _assignedTo);
@@ -92,10 +110,11 @@ namespace ChoppyChores.models
             {
                 lines[lineToEdit] = _id + ";" + _name + ";" + _cost + ";" + _assignedTo;
             }
-            
+            // Write all the lines to the file, this will overwrite the file instead of creating blank spaces
             File.WriteAllLines(DataFileHandler.Instance.GetPath(StorageFiles.PendingRewards), lines.ToArray());
         }
 
+        // Delete the reward from the file
         public void Delete()
         {
             List<string> allRewards = new List<string>();
@@ -105,6 +124,7 @@ namespace ChoppyChores.models
             File.WriteAllLines(DataFileHandler.Instance.GetPath(StorageFiles.PendingRewards), allRewards.ToArray());
         }
 
+        // Get the user the reward is assigned to
         public string GetAssignedTo()
         {
             return _assignedTo;

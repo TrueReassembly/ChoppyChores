@@ -19,6 +19,7 @@ namespace ChoppyChores.forms.parent.rewards
         private int pointer;
         private List<PendingReward> _rewards;
         
+        // Constructor for the ParentViewPendingRewards form
         public ParentViewPendingRewards()
         {
             InitializeComponent();
@@ -27,6 +28,7 @@ namespace ChoppyChores.forms.parent.rewards
             LoadEverything();
         }
 
+        // Load the pending reward information
         public void LoadEverything()
         {
             _rewards = DataFileHandler.Instance.GetAllPendingRewards();
@@ -43,30 +45,35 @@ namespace ChoppyChores.forms.parent.rewards
             lbl_For.Text = _rewards[pointer].GetAssignedTo();
         }
 
+        // Go to the Parent dashboard
         private void buttonHome_Click(object sender, EventArgs e)
         {
             Hide();
             new ParentDashboard().ShowDialog();
         }
 
+        // Go to the Parent chores page
         private void buttonChores_Click(object sender, EventArgs e)
         {
             Hide();
             new ParentViewChoresPage().ShowDialog();
         }
 
+        // Go to the Parent accounts page
         private void buttonAccounts_Click(object sender, EventArgs e)
         {
             Hide();
             new ParentViewAccountPage().ShowDialog();
         }
 
+        // Go to the Parent rewards page
         private void buttonRewards_Click(object sender, EventArgs e)
         {
             Hide();
             new ParentViewRewards().ShowDialog();
         }
 
+        // Go to the next page of pending rewards
         private void buttonNextPage_Click(object sender, EventArgs e)
         {
             if (pointer < _rewards.Count - 1)
@@ -80,6 +87,7 @@ namespace ChoppyChores.forms.parent.rewards
             }
         }
 
+        // Go to the previous page of pending rewards
         private void buttonPrevPage_Click(object sender, EventArgs e)
         {
             if (pointer > 0)
@@ -93,6 +101,7 @@ namespace ChoppyChores.forms.parent.rewards
             }
         }
 
+        // Accept the reward
         private void buttonAcceptReward_Click(object sender, EventArgs e)
         {
             var reward = _rewards[pointer];
@@ -100,6 +109,7 @@ namespace ChoppyChores.forms.parent.rewards
             MessageBox.Show("Reward accepted");
         }
 
+        // Refund the reward
         private void buttonRefundReward_Click(object sender, EventArgs e)
         {
             var reward = _rewards[pointer];

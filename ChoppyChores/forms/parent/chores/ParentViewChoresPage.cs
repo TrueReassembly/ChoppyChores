@@ -25,11 +25,13 @@ namespace ChoppyChores.forms.parent.chores
             FormClosed += new FormClosedEventHandler(ParentViewChoresPage_FormClosed);
         }
 
+        // Load the chore information
         public void LoadEverything()
         {
             children.Clear();
             children = DataFileHandler.Instance.GetChildrenSortedByName();
             chores = DataFileHandler.Instance.GetAllChores();
+            // If there are no chores, display a message to the user and clear the text boxes
             if (chores.Count == 0)
             {
                 txtChoreName.Text = "";
@@ -42,7 +44,6 @@ namespace ChoppyChores.forms.parent.chores
                 foreach (var theChild in children)
                 {
                     comboAssignedTo.Items.Add(theChild.GetUsername());
-                    Console.WriteLine("Child: " + theChild.GetUsername());
                 }
                 return;
             }
@@ -55,12 +56,14 @@ namespace ChoppyChores.forms.parent.chores
             lblPage.Text = (pointer + 1) + " / " + chores.Count;
             comboAssignedTo.Items.Clear();
             comboAssignedTo.Items.Add("Unassigned");
+            // Add the children to the combo box options
             foreach (var theChild in children)
             {
                 comboAssignedTo.Items.Add(theChild.GetUsername());
-                Console.WriteLine("Child: " + theChild.GetUsername());
             }
             var child = DataFileHandler.Instance.GetChildFromName(chore.GetClaimedBy().ToString());
+           
+            // If the chore is unassigned, set the combo box to unassigned, otherwise set it to the child's name
             if (child != null)
             {
                 comboAssignedTo.SelectedIndex = children.IndexOf(child);
@@ -74,15 +77,17 @@ namespace ChoppyChores.forms.parent.chores
             LoadEverything();
         }
 
+        // Save the chore information
         private void buttonSaveChore_Click(object sender, EventArgs e)
         {
-
+            // If there are no chores, display a message to the user
             if (chores.Count == 0)
             {
                 MessageBox.Show("Please use the 'New Chore' button to create the new chore");
                 return;
             }
 
+            // Validation for the chore name, minimum age, and reward
             if (txtChoreName.Text == "")
             {
                 MessageBox.Show("Please enter a chore name");
@@ -98,10 +103,13 @@ namespace ChoppyChores.forms.parent.chores
                 MessageBox.Show("Please enter a reward");
                 return;
             }
+            
+            // Overwrite the chore information
             Chore chore = chores[pointer];
             chore.SetName(txtChoreName.Text);
             chore.SetReward(int.Parse(numPoints.Text));
             chore.SetMinAge(int.Parse(numAge.Text));
+            // If the combo box is unassigned, set the chore to unassigned, otherwise set it to the child's ID
             if (comboAssignedTo.SelectedIndex == 0 || comboAssignedTo.SelectedIndex == -1)
             {
                 chore.SetClaimedBy("0");
@@ -110,10 +118,12 @@ namespace ChoppyChores.forms.parent.chores
             {
                 chore.SetClaimedBy(children[comboAssignedTo.SelectedIndex - 1].GetId());
             }
+            // Save the chore information
             chore.Save();
             MessageBox.Show("Chore Information Saved!");
         }
 
+        // Go to the next page of chores
         private void buttonNextPage_Click(object sender, EventArgs e)
         {
             if (pointer == chores.Count - 1)
@@ -125,6 +135,7 @@ namespace ChoppyChores.forms.parent.chores
             LoadEverything();
         }
 
+        // Go to the previous page of chores
         private void buttonPrevPage_Click(object sender, EventArgs e)
         {
             if (pointer == 0)
@@ -150,7 +161,7 @@ namespace ChoppyChores.forms.parent.chores
 
         private void buttonNewChore_Click(object sender, EventArgs e)
         {
-
+            // Validation for the chore name, minimum age, and reward
             if (txtChoreName.Text == "")
             {
                 MessageBox.Show("Please enter a chore name");
@@ -166,6 +177,7 @@ namespace ChoppyChores.forms.parent.chores
                 MessageBox.Show("Please enter a reward");
                 return;
             }
+            // If the combo box is unassigned, set the childID to an empty string, otherwise set it to the child's ID
             String childID;
             Console.WriteLine(comboAssignedTo.SelectedIndex);
             if (comboAssignedTo.SelectedIndex == 0 || comboAssignedTo.SelectedIndex == -1)
@@ -183,7 +195,8 @@ namespace ChoppyChores.forms.parent.chores
                 LoadEverything();
             }
         }
-
+        
+        // Close the form
         void ParentViewChoresPage_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();

@@ -21,6 +21,8 @@ namespace ChoppyChores.forms.parent.rewards
     {
         int pointer;
         List<Reward> _rewards;
+        
+        // Constructor for the ParentViewRewards form
         public ParentViewRewards()
         {
             InitializeComponent();
@@ -30,30 +32,35 @@ namespace ChoppyChores.forms.parent.rewards
             pointer = 0;
         }
 
+        // Go to the Parent dashboard
         private void buttonHome_Click(object sender, EventArgs e)
         {
             Hide();
             new ParentDashboard().ShowDialog();
         }
 
+        // Go to the Parent chores page
         private void buttonChores_Click(object sender, EventArgs e)
         {
             Hide();
             new ParentViewChoresPage().ShowDialog();
         }
 
+        // Go to the Parent accounts page
         private void buttonAccounts_Click(object sender, EventArgs e)
         {
             Hide();
             new ParentViewAccountPage().ShowDialog();
         }
 
+        // Go to the Parent rewards page
         private void button_ViewPending_Click(object sender, EventArgs e)
         {
             Hide();
             new ParentViewPendingRewards().ShowDialog();
         }
 
+        // Load the reward information
         private void LoadEverything()
         {
             if (_rewards.Count == 0)
@@ -69,6 +76,7 @@ namespace ChoppyChores.forms.parent.rewards
             numPoints.Text = reward.GetCost().ToString();
         }
         
+        // Go to the previous page
         private void buttonPrevPage_Click(object sender, EventArgs e)
         {
             if (pointer > 0) pointer--;
@@ -77,11 +85,13 @@ namespace ChoppyChores.forms.parent.rewards
             LoadEverything();
         }
         
+        // Load the ParentViewRewards form
         private void ParentViewRewards_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
 
+        // Go to the next page
         private void buttonNextPage_Click_1(object sender, EventArgs e)
         {
             if (pointer < _rewards.Count - 1) pointer++;
@@ -90,8 +100,10 @@ namespace ChoppyChores.forms.parent.rewards
             LoadEverything();
         }
 
+        // Create a new reward
         private void buttonNewReward_Click(object sender, EventArgs e)
         {
+            // Validation for the reward name and cost
             if (txtRewardName.Text == "")
             {
                 MessageBox.Show("Please enter a reward name");
@@ -109,6 +121,7 @@ namespace ChoppyChores.forms.parent.rewards
             LoadEverything();
         }
 
+        // Save the reward information
         private void buttonSaveReward_Click(object sender, EventArgs e)
         {
             if (txtRewardName.Text == "")

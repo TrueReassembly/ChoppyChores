@@ -10,6 +10,7 @@ namespace ChoppyChores.models
         private string _username;
         private string _password;
 
+        // Getters and Setters for the Account class
         public string GetId()
         {
             return _id;
@@ -40,11 +41,21 @@ namespace ChoppyChores.models
             _password = password;
         }
 
+        /**
+         * Reset the password for the account and hashes it
+         * @param rawPassword The new password
+         */
         public void ResetPassword(string rawPassword)
         {
             _password = GeneralUtils.ComputeHash(rawPassword);
         }
         
+        /**
+         * Constructor for the Account class
+         * @param type The type of account
+         * @param username The username for the account
+         * @param password The password for the account
+         */
         protected Account(AccountType type, string username, string password)
         {
             _accountType = type;
@@ -53,6 +64,13 @@ namespace ChoppyChores.models
             _id = DataFileHandler.Instance.FindNewId(StorageFiles.Accounts).ToString();
         }
         
+        /**
+         * Constructor for the Account class
+         * @param type The type of account
+         * @param id The ID of the account
+         * @param username The username for the account
+         * @param password The password for the account
+         */
         protected Account(AccountType type, string id, string username, string password)
         {
             _accountType = type;
@@ -61,11 +79,18 @@ namespace ChoppyChores.models
             _id = id;
         }
         
+        /**
+         * Get the type of account
+         * @return The type of account
+         */
         public AccountType GetAccountType()
         {
             return _accountType;
         }
 
+        /**
+         * Save the account to the data file
+         */
         public abstract void Save();
     }
 }

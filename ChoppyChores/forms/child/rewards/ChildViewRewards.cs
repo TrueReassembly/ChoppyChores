@@ -18,6 +18,8 @@ namespace ChoppyChores.forms.child.rewards
         
         List<Reward> _rewards;
         int pointer;
+        
+        // Constructor for the ChildViewRewards form
         public ChildViewRewards()
         {
             InitializeComponent();
@@ -26,6 +28,7 @@ namespace ChoppyChores.forms.child.rewards
             LoadEverything();
         }
 
+        // Load all the information about the reward, using the reward list and the pointer which represents the index of the reward
         public void LoadEverything()
         {
             _rewards = DataFileHandler.Instance.GetAllRewards();
@@ -45,6 +48,7 @@ namespace ChoppyChores.forms.child.rewards
             lblRewardPage.Text = (pointer + 1) + "/" + _rewards.Count;
         }
 
+        // Claim the reward, if the child has enough points, the reward will be claimed
         private void btnClaim_Click(object sender, EventArgs e)
         {
             var childPoints = DataFileHandler.Instance.GetLoggedInChild().GetPoints();
@@ -56,10 +60,12 @@ namespace ChoppyChores.forms.child.rewards
                 return;
             }
             
-            DataFileHandler.Instance.GetLoggedInChild().SetPoints(childPoints - reward.GetCost());
+            DataFileHandler.Instance.GetLoggedInChild().SetPoints(childPoints - reward.GetCost()); // Deduct the points from the child
             new PendingReward(reward.GetName(), reward.GetCost(), DataFileHandler.Instance.GetLoggedInChild().GetId()).Save();
             MessageBox.Show("Reward claimed, please talk to your parent to redeem it");
         }
+        
+        // Go to the previous reward
 
         private void btnPrevPageChildChore_Click(object sender, EventArgs e)
         {
@@ -72,6 +78,7 @@ namespace ChoppyChores.forms.child.rewards
             LoadEverything();
         }
 
+        // Go to the next reward
         private void btnNextPageChildChore_Click(object sender, EventArgs e)
         {
             if (pointer == _rewards.Count - 1)
@@ -83,18 +90,21 @@ namespace ChoppyChores.forms.child.rewards
             LoadEverything();
         }
 
+        // Go back to the child dashboard
         private void btnHome_Click(object sender, EventArgs e)
         {
             Hide();
             new ChildDashboard().ShowDialog();
         }
 
+        // Go to the chores page
         private void btnChores_Click(object sender, EventArgs e)
         {
             Hide();
             new ChildViewChoresPage().ShowDialog();
         }
         
+        // Close the application when the form is closed
         private void ChildViewRewards_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();

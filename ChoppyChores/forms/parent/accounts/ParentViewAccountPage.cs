@@ -21,6 +21,7 @@ namespace ChoppyChores.forms.parent.accounts
             LoadEverything();
         }
 
+        // Load the child account information
         private void LoadEverything()
         {
             if (_children.Count == 0)
@@ -34,44 +35,50 @@ namespace ChoppyChores.forms.parent.accounts
             num_Points.Value = child.GetPoints();
         }
         
+        // Go to the Parent dashboard
         private void buttonHome_Click(object sender, EventArgs e)
         {
             Hide();
             new ParentDashboard().ShowDialog();
         }
         
+        // Go to the Parent chores page
         private void buttonChores_Click(object sender, EventArgs e)
         {
             Hide();
             new chores.ParentViewChoresPage().ShowDialog();
         }
 
+        // Go to the Parent accounts page
         private void buttonAccounts_Click(object sender, EventArgs e)
         {
             return;
         }
 
+        // Go to the Parent rewards page
         private void buttonRewards_Click(object sender, EventArgs e)
         {
             Hide();
             new rewards.ParentViewRewards().ShowDialog();
         }
         
+        // Close the application
         void ParentViewAccountPage_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
 
+        // Create a new child account
         private void buttonNewChild_Click(object sender, EventArgs e)
         {
             var age = (int) Math.Floor(num_Age.Value);
             var points = (int) Math.Floor(num_Points.Value);
-            if (txt_Password.Text == "")
+            if (txt_Password.Text == "") // Check if the password box is empty
             {
                 MessageBox.Show("Please enter a password for the child account.");
                 return;
             }
-            if (txt_Username.Text == "")
+            if (txt_Username.Text == "") // Check if the username box is empty
             {
                 MessageBox.Show("Please enter a username for the child account.");
                 return;

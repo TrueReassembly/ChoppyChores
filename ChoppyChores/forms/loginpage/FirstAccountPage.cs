@@ -11,6 +11,7 @@ namespace ChoppyChores.forms.loginpage
             InitializeComponent();
         }
 
+        // Create a parent account
         private void btn_CreateAccount_Click(object sender, EventArgs e)
         {
             var username = txt_Username.Text;
