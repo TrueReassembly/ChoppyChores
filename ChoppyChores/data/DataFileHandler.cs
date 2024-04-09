@@ -41,9 +41,9 @@ namespace ChoppyChores.data
          */
         public Child GetChildById(string id)
         {
-            
+
             Child child = null;
-            
+
             RunReader(StorageFiles.Accounts, accountFile =>
             {
                 while (!accountFile.EndOfStream)
@@ -53,13 +53,18 @@ namespace ChoppyChores.data
 
                     if (split[0].Equals(id))
                     {
-                        child = line.ToChild();
+                        child = line.ToChild(); // Convert the string to a child object
                     }
                 }
             });
             return child;
         }
 
+        /**
+         * Finds a new available ID for the specified storage file
+         * @param file the Storage file to use
+         * @returns an available Id
+         */
         public string FindNewId(StorageFiles file)
         {
             string id = "";
@@ -79,7 +84,7 @@ namespace ChoppyChores.data
         }
 
         /**
-         * Runs a reader on the specified file
+         * Runs a file reader on the specified file
          * @param file The file to read from
          * @param callback The code to run on the reader
          */
@@ -114,7 +119,7 @@ namespace ChoppyChores.data
         }
 
         /**
-         * Runs a writer on the specified file
+         * Runs a file writer on the specified file
          * @param file The file to write to
          * @param callback The code to run on the writer
          */
@@ -148,6 +153,7 @@ namespace ChoppyChores.data
             }
         }
         
+
         public List<Chore> sortChoresBy(ChoreSort sort, bool ascending)
         {
             List<Chore> unsortedChores = new List<Chore>();

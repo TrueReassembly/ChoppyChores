@@ -221,11 +221,6 @@ namespace ChoppyChores.forms.parent.chores
             new ParentViewRewards().ShowDialog();
         }
 
-        private void comboAssignedTo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Console.WriteLine("New Index: " + comboAssignedTo.SelectedIndex);
-        }
-
         private void buttonDeleteChore_Click(object sender, EventArgs e)
         {
             if (chores.Count == 0)

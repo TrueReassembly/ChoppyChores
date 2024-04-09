@@ -124,6 +124,11 @@ namespace ChoppyChores.forms.parent.rewards
         // Save the reward information
         private void buttonSaveReward_Click(object sender, EventArgs e)
         {
+            if (_rewards.Count == 0)
+            {
+                MessageBox.Show("Please use the 'New Reward' button");
+                return;
+            }
             if (txtRewardName.Text == "")
             {
                 MessageBox.Show("Please enter a reward name");

@@ -228,7 +228,6 @@ namespace ChoppyChores.forms.parent.chores
             this.comboAssignedTo.Name = "comboAssignedTo";
             this.comboAssignedTo.Size = new System.Drawing.Size(121, 21);
             this.comboAssignedTo.TabIndex = 18;
-            this.comboAssignedTo.SelectedIndexChanged += new System.EventHandler(this.comboAssignedTo_SelectedIndexChanged);
             // 
             // label6
             // 
