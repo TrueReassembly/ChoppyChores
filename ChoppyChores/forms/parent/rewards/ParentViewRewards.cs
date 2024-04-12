@@ -28,8 +28,8 @@ namespace ChoppyChores.forms.parent.rewards
             InitializeComponent();
             
             FormClosed += new FormClosedEventHandler(ParentViewRewards_FormClosed);
-            _rewards = DataFileHandler.Instance.GetAllRewards();
             pointer = 0;
+            LoadEverything();
         }
 
         // Go to the Parent dashboard
@@ -63,6 +63,7 @@ namespace ChoppyChores.forms.parent.rewards
         // Load the reward information
         private void LoadEverything()
         {
+            _rewards = DataFileHandler.Instance.GetAllRewards();
             if (_rewards.Count == 0)
             {
                 txtRewardName.Text = "";
@@ -116,8 +117,6 @@ namespace ChoppyChores.forms.parent.rewards
             }
             new Reward(txtRewardName.Text, int.Parse(numPoints.Text)).Save();
             MessageBox.Show("Reward created");
-            _rewards = DataFileHandler.Instance.GetAllRewards();
-            pointer = _rewards.Count - 1;
             LoadEverything();
         }
 

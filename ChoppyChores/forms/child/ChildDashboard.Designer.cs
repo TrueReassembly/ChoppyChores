@@ -126,8 +126,10 @@ namespace ChoppyChores.forms.child
             this.Controls.Add(this.btnHome);
             this.Name = "ChildDashboard";
             this.Text = "ChildDashboard";
+            this.Load += new System.EventHandler(this.ChildDashboard_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.Label lbl_points;

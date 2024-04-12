@@ -50,6 +50,8 @@ namespace ChoppyChores
                     return;
                 }
             }
+
+            MessageBox.Show("Incorrect username or password");
         }
 
         // When the form is closed, close the application

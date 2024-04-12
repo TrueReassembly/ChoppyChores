@@ -42,7 +42,7 @@ namespace ChoppyChores.forms.parent.rewards
                 return;
             }
             lbl_RewardName.Text = _rewards[pointer].GetName();
-            lbl_For.Text = _rewards[pointer].GetAssignedTo();
+            lbl_For.Text = DataFileHandler.Instance.GetChildById(_rewards[pointer].GetAssignedTo()).GetUsername();
         }
 
         // Go to the Parent dashboard
@@ -114,7 +114,9 @@ namespace ChoppyChores.forms.parent.rewards
         {
             var reward = _rewards[pointer];
             var child = DataFileHandler.Instance.GetChildById(reward.GetAssignedTo());
-            child.SetPoints(child.GetPoints() + reward.GetCost());
+            var points = child.GetPoints();
+            child.SetPoints(points + reward.GetCost());
+            child.Save();
             reward.Delete();
             MessageBox.Show("Reward refunded");
         }

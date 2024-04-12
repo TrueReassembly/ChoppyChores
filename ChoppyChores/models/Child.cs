@@ -93,8 +93,6 @@ namespace ChoppyChores.models
                     // Create a new line with the child data
                     var line = GetId() + ";" + AccountType.Child + ";" + GetUsername() + ";" + GetPassword() + ";" +
                                _age + ";" + _points;
-                    // Add new line to the end of the file
-                    accountFile.WriteLine(line);
                     Console.WriteLine(line);
                 }
                 else
@@ -102,9 +100,13 @@ namespace ChoppyChores.models
                     // Ovewrite the iteration line with the new data
                     
                     lines[lineToEdit] = GetId() + ";" + AccountType.Child + ";" + GetUsername() + ";" + GetPassword() + ";" + _age + ";" + _points;
-                    accountFile.Write(string.Join("\n", lines));
+                    
                 }
             });
+
+            lines.RemoveAll(line => line == "");
+
+            File.WriteAllLines(DataFileHandler.Instance.GetPath(StorageFiles.Accounts), lines);
         }
         
         // Getters and setters for the age and points of the child

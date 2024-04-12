@@ -106,7 +106,8 @@ namespace ChoppyChores.forms.parent.chores
             }
             var chore = pendingChores[pointer];
             var child = DataFileHandler.Instance.GetChildById(chore.GetClaimedBy());
-            child.SetPoints(child.GetPoints() + chore.GetReward());
+            var points = child.GetPoints();
+            child.SetPoints(points + chore.GetReward());
             child.Save();
             chore.Delete();
             pointer = 0;

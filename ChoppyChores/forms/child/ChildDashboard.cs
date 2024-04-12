@@ -35,6 +35,7 @@ namespace ChoppyChores.forms.child
             // Display the number of chores claimed by the child
             lbl_ClaimedChores.Text = "You have " + claimedByChild + " chores to complete!";
             lbl_points.Text = "You have " + DataFileHandler.Instance.GetLoggedInChild().GetPoints() + " points!";
+            FormClosed += new FormClosedEventHandler(ChildDashboard_FormClosed);
         }
 
         // Go to the Child chores page
@@ -49,6 +50,16 @@ namespace ChoppyChores.forms.child
         {
             Hide();
             new ChildViewRewards().ShowDialog();
+        }
+
+        private void ChildDashboard_Load(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void ChildDashboard_FormClosed(object sender, EventArgs e)
+        {
+            Application.Exit(); 
         }
     }
 }

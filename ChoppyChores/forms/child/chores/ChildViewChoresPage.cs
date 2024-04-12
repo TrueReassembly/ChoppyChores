@@ -24,6 +24,7 @@ namespace ChoppyChores.forms.parent.chores
             chores = DataFileHandler.Instance.GetAllChores();
             Console.WriteLine(chores.Count);
             LoadEverything();
+            FormClosed += new FormClosedEventHandler(ChildViewChoresPage_FormClosed);
         }
 
         /**
@@ -39,7 +40,8 @@ namespace ChoppyChores.forms.parent.chores
                 lblStatus.Text = "Unavailable";
                 lblAge.Text = "Unavailable";
                 MessageBox.Show("There are no chores. Come back later!");
-                //TODO: Switch back to the old one
+                Hide();
+                new ChildDashboard().ShowDialog();
                 return;
             }
 
@@ -151,6 +153,11 @@ namespace ChoppyChores.forms.parent.chores
         {
             Hide();
             new ChildViewRewards().ShowDialog();
+        }
+
+        private void ChildViewChoresPage_FormClosed(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -77,7 +77,7 @@ namespace ChoppyChores.data
             bool idExists = true;
             while (idExists)
             {
-                id = random.Next(100, 999).ToString();
+                id = random.Next(10000, 99999).ToString();
                 idExists = lines.Any(line => line.Split(';')[0].Equals(id)); // if the line does not exist in any of the lines, then the id is unique therefore we set idExists to false, breaking out of the loop
             }
             return id;
