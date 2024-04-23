@@ -84,9 +84,9 @@ namespace ChoppyChores.forms.child
             this.label_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_name.Location = new System.Drawing.Point(269, 69);
             this.label_name.Name = "label_name";
-            this.label_name.Size = new System.Drawing.Size(279, 37);
+            this.label_name.Size = new System.Drawing.Size(242, 37);
             this.label_name.TabIndex = 7;
-            this.label_name.Text = "Welcome, {name}!";
+            this.label_name.Text = "Welcome, Alan!";
             this.label_name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_ClaimedChores
@@ -95,9 +95,9 @@ namespace ChoppyChores.forms.child
             this.lbl_ClaimedChores.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_ClaimedChores.Location = new System.Drawing.Point(163, 106);
             this.lbl_ClaimedChores.Name = "lbl_ClaimedChores";
-            this.lbl_ClaimedChores.Size = new System.Drawing.Size(518, 37);
+            this.lbl_ClaimedChores.Size = new System.Drawing.Size(521, 37);
             this.lbl_ClaimedChores.TabIndex = 8;
-            this.lbl_ClaimedChores.Text = "You have got x chores to complete!";
+            this.lbl_ClaimedChores.Text = "You have got 3 chores to complete!";
             this.lbl_ClaimedChores.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_points
@@ -106,9 +106,9 @@ namespace ChoppyChores.forms.child
             this.lbl_points.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_points.Location = new System.Drawing.Point(163, 143);
             this.lbl_points.Name = "lbl_points";
-            this.lbl_points.Size = new System.Drawing.Size(518, 37);
+            this.lbl_points.Size = new System.Drawing.Size(355, 37);
             this.lbl_points.TabIndex = 9;
-            this.lbl_points.Text = "You have got x chores to complete!";
+            this.lbl_points.Text = "You have got 30 points!";
             this.lbl_points.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ChildDashboard

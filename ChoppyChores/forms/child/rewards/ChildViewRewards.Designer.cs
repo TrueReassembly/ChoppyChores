@@ -48,9 +48,9 @@ namespace ChoppyChores.forms.child.rewards
             this.lblRewardPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRewardPage.Location = new System.Drawing.Point(680, 70);
             this.lblRewardPage.Name = "lblRewardPage";
-            this.lblRewardPage.Size = new System.Drawing.Size(122, 44);
+            this.lblRewardPage.Size = new System.Drawing.Size(73, 44);
             this.lblRewardPage.TabIndex = 28;
-            this.lblRewardPage.Text = "label8";
+            this.lblRewardPage.Text = "1/1";
             // 
             // btnNextPageChildChore
             // 
@@ -88,9 +88,9 @@ namespace ChoppyChores.forms.child.rewards
             this.lblCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCost.Location = new System.Drawing.Point(338, 118);
             this.lblCost.Name = "lblCost";
-            this.lblCost.Size = new System.Drawing.Size(126, 24);
+            this.lblCost.Size = new System.Drawing.Size(136, 24);
             this.lblCost.TabIndex = 20;
-            this.lblCost.Text = "Costs x points";
+            this.lblCost.Text = "Costs 30 points";
             this.lblCost.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblRewardName
@@ -99,9 +99,9 @@ namespace ChoppyChores.forms.child.rewards
             this.lblRewardName.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRewardName.Location = new System.Drawing.Point(334, 74);
             this.lblRewardName.Name = "lblRewardName";
-            this.lblRewardName.Size = new System.Drawing.Size(122, 44);
+            this.lblRewardName.Size = new System.Drawing.Size(195, 44);
             this.lblRewardName.TabIndex = 19;
-            this.lblRewardName.Text = "label8";
+            this.lblRewardName.Text = "Ice Cream";
             // 
             // label7
             // 
@@ -162,6 +162,7 @@ namespace ChoppyChores.forms.child.rewards
             this.Text = "ChildViewRewards";
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
