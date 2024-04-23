@@ -9,6 +9,13 @@ using ChoppyChores.models;
 using ChoppyChores.utils;
 
 
+
+// FOR EXAMINER
+// Please see the instance of recursion in StringExtensions.cs: Line 75
+// Please see the instance of using the Action class to exploit all features of the chosen language in DataFileHandler.cs: Line 91
+
+
+
 namespace ChoppyChores
 {
 

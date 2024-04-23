@@ -91,9 +91,9 @@ namespace ChoppyChores.forms.parent.chores
             this.lblChoreName.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChoreName.Location = new System.Drawing.Point(330, 68);
             this.lblChoreName.Name = "lblChoreName";
-            this.lblChoreName.Size = new System.Drawing.Size(122, 44);
+            this.lblChoreName.Size = new System.Drawing.Size(245, 44);
             this.lblChoreName.TabIndex = 5;
-            this.lblChoreName.Text = "label8";
+            this.lblChoreName.Text = "Clean Dishes";
             // 
             // lblWorth
             // 
@@ -103,7 +103,7 @@ namespace ChoppyChores.forms.parent.chores
             this.lblWorth.Name = "lblWorth";
             this.lblWorth.Size = new System.Drawing.Size(130, 24);
             this.lblWorth.TabIndex = 6;
-            this.lblWorth.Text = "Worth x points";
+            this.lblWorth.Text = "Worth 5 points";
             this.lblWorth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblClaimedBy
@@ -112,9 +112,9 @@ namespace ChoppyChores.forms.parent.chores
             this.lblClaimedBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClaimedBy.Location = new System.Drawing.Point(334, 136);
             this.lblClaimedBy.Name = "lblClaimedBy";
-            this.lblClaimedBy.Size = new System.Drawing.Size(118, 24);
+            this.lblClaimedBy.Size = new System.Drawing.Size(176, 24);
             this.lblClaimedBy.TabIndex = 7;
-            this.lblClaimedBy.Text = "Claimed by y";
+            this.lblClaimedBy.Text = "Claimed by Nobody";
             this.lblClaimedBy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnClaim
@@ -143,9 +143,9 @@ namespace ChoppyChores.forms.parent.chores
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.Location = new System.Drawing.Point(352, 160);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(79, 24);
+            this.lblStatus.Size = new System.Drawing.Size(160, 24);
             this.lblStatus.TabIndex = 10;
-            this.lblStatus.Text = "Status: z";
+            this.lblStatus.Text = "Status: Unclaimed";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnPrevPageChildChore
@@ -174,9 +174,9 @@ namespace ChoppyChores.forms.parent.chores
             this.lblAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAge.Location = new System.Drawing.Point(310, 184);
             this.lblAge.Name = "lblAge";
-            this.lblAge.Size = new System.Drawing.Size(174, 24);
+            this.lblAge.Size = new System.Drawing.Size(185, 24);
             this.lblAge.TabIndex = 13;
-            this.lblAge.Text = "For children aged s";
+            this.lblAge.Text = "For children aged 13";
             this.lblAge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblChildChorePage
@@ -185,9 +185,9 @@ namespace ChoppyChores.forms.parent.chores
             this.lblChildChorePage.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChildChorePage.Location = new System.Drawing.Point(676, 64);
             this.lblChildChorePage.Name = "lblChildChorePage";
-            this.lblChildChorePage.Size = new System.Drawing.Size(122, 44);
+            this.lblChildChorePage.Size = new System.Drawing.Size(73, 44);
             this.lblChildChorePage.TabIndex = 14;
-            this.lblChildChorePage.Text = "label8";
+            this.lblChildChorePage.Text = "1/1";
             // 
             // ChildViewChoresPage
             // 
@@ -208,9 +208,10 @@ namespace ChoppyChores.forms.parent.chores
             this.Controls.Add(this.btnChores);
             this.Controls.Add(this.btnHome);
             this.Name = "ChildViewChoresPage";
-            this.Text = "View Chores";
+            this.Text = "e2";
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
