@@ -145,18 +145,6 @@ namespace ChoppyChores.forms.parent.chores
             else pointer--;
 
             LoadEverything();
-            
-            // txtChoreName.Text = chores[pointer].GetName();
-            // var child = DataFileHandler.Instance.GetChildFromName(chores[pointer].GetClaimedBy());
-            // if (child != null)
-            // {
-            //     comboAssignedTo.SelectedIndex = children.IndexOf(child);
-            // }
-            // else
-            //     comboAssignedTo.SelectedIndex = 0;
-            // numAge.Text = chores[pointer].GetMinAge().ToString();
-            // numPoints.Text = chores[pointer].GetReward().ToString();
-            // lblPage.Text = (pointer + 1) + " / " + chores.Count;
         }
 
         private void buttonNewChore_Click(object sender, EventArgs e)

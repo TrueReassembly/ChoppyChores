@@ -177,22 +177,22 @@ namespace ChoppyChores.forms.parent.chores
             // 
             this.lbl_AssignedTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_AssignedTo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbl_AssignedTo.Location = new System.Drawing.Point(347, 170);
+            this.lbl_AssignedTo.Location = new System.Drawing.Point(169, 170);
             this.lbl_AssignedTo.Name = "lbl_AssignedTo";
-            this.lbl_AssignedTo.Size = new System.Drawing.Size(74, 18);
+            this.lbl_AssignedTo.Size = new System.Drawing.Size(413, 18);
             this.lbl_AssignedTo.TabIndex = 41;
-            this.lbl_AssignedTo.Text = "label7";
+            this.lbl_AssignedTo.Text = "James";
             this.lbl_AssignedTo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_ChoreName
             // 
             this.lbl_ChoreName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_ChoreName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbl_ChoreName.Location = new System.Drawing.Point(347, 99);
+            this.lbl_ChoreName.Location = new System.Drawing.Point(315, 99);
             this.lbl_ChoreName.Name = "lbl_ChoreName";
-            this.lbl_ChoreName.Size = new System.Drawing.Size(74, 18);
+            this.lbl_ChoreName.Size = new System.Drawing.Size(360, 18);
             this.lbl_ChoreName.TabIndex = 42;
-            this.lbl_ChoreName.Text = "label7";
+            this.lbl_ChoreName.Text = "Clean the Dishes";
             // 
             // lbl_Worth
             // 
@@ -202,7 +202,7 @@ namespace ChoppyChores.forms.parent.chores
             this.lbl_Worth.Name = "lbl_Worth";
             this.lbl_Worth.Size = new System.Drawing.Size(74, 18);
             this.lbl_Worth.TabIndex = 43;
-            this.lbl_Worth.Text = "label7";
+            this.lbl_Worth.Text = "30 points";
             this.lbl_Worth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ParentViewPendingChores

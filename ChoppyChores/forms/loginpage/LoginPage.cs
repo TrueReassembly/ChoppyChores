@@ -1,11 +1,8 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
 using ChoppyChores.data;
 using ChoppyChores.forms.child;
 using ChoppyChores.forms.parent;
-using ChoppyChores.forms.parent.chores;
-using ChoppyChores.models;
 using ChoppyChores.utils;
 
 namespace ChoppyChores

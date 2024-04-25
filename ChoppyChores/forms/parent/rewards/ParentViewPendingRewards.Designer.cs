@@ -51,19 +51,19 @@ namespace ChoppyChores.forms.parent.rewards
             this.lbl_RewardName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lbl_RewardName.Location = new System.Drawing.Point(357, 98);
             this.lbl_RewardName.Name = "lbl_RewardName";
-            this.lbl_RewardName.Size = new System.Drawing.Size(74, 18);
+            this.lbl_RewardName.Size = new System.Drawing.Size(414, 18);
             this.lbl_RewardName.TabIndex = 57;
-            this.lbl_RewardName.Text = "label7";
+            this.lbl_RewardName.Text = "Ice Cream";
             // 
             // lbl_For
             // 
             this.lbl_For.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_For.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbl_For.Location = new System.Drawing.Point(348, 169);
+            this.lbl_For.Location = new System.Drawing.Point(153, 169);
             this.lbl_For.Name = "lbl_For";
-            this.lbl_For.Size = new System.Drawing.Size(74, 18);
+            this.lbl_For.Size = new System.Drawing.Size(440, 18);
             this.lbl_For.TabIndex = 56;
-            this.lbl_For.Text = "label7";
+            this.lbl_For.Text = "James";
             this.lbl_For.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
